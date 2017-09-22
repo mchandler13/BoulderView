@@ -18,7 +18,7 @@ def access_api():
                       access_token_secret=twitter_access_token_secret)
 
 def get_results(api):
-    hashtags = ['#boulderlife','#CUBoulder','#boulderco','#boulder','#bouldercolorado','@bouldercolorado','@downtownboulder','@BoulderCountyOS','#chautauqua','#flatirons','#flatironsboulder','#beboulder','#pearlstreet']
+    hashtags = ['#boulderlife','#Buffs','#BeBoulder','#FolsomField','#bouldercouncil','#CUBoulder','#boulderco','#boulder','#bouldercolorado','@bouldercolorado','@downtownboulder','@BoulderCountyOS','#chautauqua','#flatirons','#flatironsboulder','#beboulder','#pearlstreet']
     results = []
     for hashtag in hashtags:
         results += api.GetSearch(term = hashtag,count = 30)
