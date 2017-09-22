@@ -53,7 +53,7 @@ def plot_first(dataframe):
     size = [10*i for i in list(df_coords['Count'])]
     alpha = [i/26 for i in list(df_coords['Count'])]
     current_palette = sns.color_palette("Set2", 10)
-    sns.lmplot(x = 'Longitude',y = 'Latitude',data = df_coords, hue = 'photo',fit_reg = False,scatter_kws = {'alpha':.2,'s':size})
+    sns.lmplot(x = 'Longitude',y = 'Latitude',data = df_coords, hue = 'photo',fit_reg = False,scatter_kws = {'alpha':.6,'s':size})
     plt.title("Map of Boulder: {} points, {} Tweets".format(df_coords.shape[0],df_coords['Count'].sum()),fontsize = 20)
     plt.xlabel("Longitude",fontsize = 10)
     plt.ylabel("Latitude",fontsize = 10)
