@@ -60,8 +60,8 @@ def coordinates_df(dataframe):
 
 def plot_first(dataframe):
     df_coords = dataframe
-    m_lat = df_coords["Latitude"].mean()
-    m_lon = df_coords["Longitude"].mean()
+    m_lat = df_coords["Latitude"].median()
+    m_lon = df_coords["Longitude"].median()
     img = imread("/Users/Marty/Desktop/Boulder.png")
     size = [10*i for i in list(df_coords['Count'])]
     alpha = [i/26 for i in list(df_coords['Count'])]
@@ -117,11 +117,9 @@ if __name__ == '__main__':
 
     df_coords['text'] =df_coords['Hashtags'].astype(str)
 
-    scl = [ [0,"rgb(5, 10, 172)"],[0.35,"rgb(40, 60, 190)"],[0.5,"rgb(70, 100, 245)"],\
-        [0.6,"rgb(90, 120, 245)"],[0.7,"rgb(106, 137, 247)"],[1,"rgb(220, 220, 220)"] ]
-
     data = [ dict(
             type = 'scatter',
+            showlegend = True,
             x = df_coords['Longitude'],
             y = df_coords['Latitude'],
             text = df_coords['text'],
@@ -134,28 +132,20 @@ if __name__ == '__main__':
                 symbol = 'circle',
                 line = dict(
                     width=1,
-                    color='rgba(102, 102, 102)'
-                ),
-                colorscale = scl,
-                cmin = 0,
-                colorbar=dict(
-                    title="Incoming flightsFebruary 2011"
-                )
-            ))]
+                    color='rgba(102, 102, 102)')))]
 
     layout = dict(
-            title = 'Most trafficked US airports<br>(Hover for airport names)',
-            colorbar = True,
-            geo = dict(
-                scope='usa',
-                projection=dict( type='albers usa' ),
-                showland = True,
-                landcolor = "rgb(250, 250, 250)",
-                subunitcolor = "rgb(217, 217, 217)",
-                countrycolor = "rgb(217, 217, 217)",
-                countrywidth = 0.5,
-                subunitwidth = 0.5
-            ),
+            title = 'Boulder Tweets',
+            images = [dict(source = "https://raw.githubusercontent.com/mchandler13/BoulderView/master/Boulder.png",
+                      xref= "x",
+                      yref= "y",
+                      x= -105.4,
+                      y= 40.08,
+                      sizex= .3,
+                      sizey= .1,
+                      sizing= "stretch",
+                      opacity= 0.7,
+                      layer= "below")]
         )
 
     fig = dict( data=data, layout=layout )
