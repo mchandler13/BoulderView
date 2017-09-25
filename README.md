@@ -14,4 +14,4 @@ I will be predicting where photos are being taken in Boulder CO, based on the te
 3) Feature Engineering: Which features are important?
 
 
-<img alt="Initial Findings" src="data/images/EDA_1.jpg" width='400'>
+<img alt="Initial Findings" src="data/images/EDA_1.jpg" width='800' height = '700'>
