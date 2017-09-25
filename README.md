@@ -24,7 +24,18 @@ After each pull, new data would be added into the dataframe, with any repeats be
 * **Created_At**: The date/time when the tweet was posted
 * **Coordinates**: the longitude/latitude coordinates of the tweet
 
-### EDA
-Dropping all rows where coordinates were NaN, and then grouping the dataframe by coordinates, and getting the count of each feature. Then plotting the results over a map of Boulder, with the size of each marker indicating the number of tweets sent from each location.
+## EDA
+Dropping all rows where coordinates were NaN, and then grouping the dataframe by coordinates, and getting the count of each feature. Then plotting the results over a map of Boulder, with the size of each marker indicating the number of tweets sent from each location. This created a new dataframe called df_coords, containing the counts of the Type column ("Photo or "Not Photo"). 
 
-<img alt="EDA_1" src="data/images/EDA_2.jpg" width='800' height = '550'>
+<img alt="EDA_1" src="data/images/EDA_2.jpg" width='400' height = '225'>
+Made with Seaborn
+
+Moving forward, I knew I'd be using interactive plots, so I looked into a few:
+* [Bokeh](https://bokeh.pydata.org/en/latest/)
+* [Plotly](https://plot.ly/)
+* [Folium](https://folium.readthedocs.io/en/latest/)
+
+Decided to use Plotly, due to it's ease of use, and ability to interact with webapps
+[Here](https://plot.ly/~martychandler13/8.embed) is an early example using Plotly
+
+
