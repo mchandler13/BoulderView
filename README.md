@@ -5,9 +5,8 @@ Using social networks to predict where photos are being taken, based on the asso
 1. [Early Steps](#Early-Steps)
    * [Gathering Data](#Gathering-The-Data)
    * [Building The Dataset](#Building-the-Dataset)
-2. [Acoustic Features of Speech](#acoustic-features-of-speech)
-    * [Segmentation](#segmentation-code)
-    * [Feature Extraction](#feature-extraction-code)
+   * [EDA](#EDA)
+
 
 ## Early Steps
 I decided on Twitter, due to the simlicity of it's API. After gaining access, it was very easy to get the relevant information.
@@ -25,9 +24,7 @@ After each pull, new data would be added into the dataframe, with any repeats be
 * **Created_At**: The date/time when the tweet was posted
 * **Coordinates**: the longitude/latitude coordinates of the tweet
 
-2) Creating a dataset
-    * Pulling data from Twitter can be messy!
-3) Feature Engineering: Which features are important?
-
+### EDA
+Dropping all rows where coordinates were NaN, and then grouping the dataframe by coordinates, and getting the count of each feature. Then plotting the results over a map of Boulder, with the size of each marker indicating the number of tweets sent from each location.
 
 <img alt="EDA_1" src="data/images/EDA_1.jpg" width='800' height = '550'>
