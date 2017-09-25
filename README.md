@@ -37,3 +37,4 @@ Moving forward, I knew I'd be using interactive plots, so I looked into a few:
 
 Decided to use Plotly, due to it's ease of use, and ability to interact with webapps. [Here](https://plot.ly/~martychandler13/8.embed) is an early example using Plotly. It's simple to use, and has built-in hover properties. BOULDER MAP IS NOT APPEARING UNDER SCATTER PLOT, FIX THIS.
 
+AsDict() picture of this
