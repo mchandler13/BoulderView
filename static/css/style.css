@@ -24,8 +24,18 @@ body {
 }
 #plot{
   margin-top: 90px;
-  width: 100%;
+  width: 80%;
   height: 100%;
   border:none;
   z-index: 2;
+}
+#there{
+  position: absolute;
+  left: 81%;
+  top: 130px;
+  z-index: 3;
+  border : none;
+  max-width: 200px;
+  max-height: 150px;
+  align: "middle";
 }

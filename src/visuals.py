@@ -108,48 +108,76 @@ if __name__ == '__main__':
     df = load('../data/tweets.txt')
     df_coords = coordinates_df(df)
     dfc = df_coords[df_coords['Count']>=2].reset_index()
-    plot_first(df_coords)
+    # plot_first(df_coords)
     # plotly_plot(df_coords)
     df_hashtags = hashtag_df(df)
     df_pics = pictures_df(df)
     df_text = text_df(df)
 
 
-    df_coords['text'] =df_coords['Hashtags'].astype(str)
+    df_coords['text'] =df_coords['Count'].astype(str)
 
-    data = [ dict(
-            type = 'scatter',
-            showlegend = True,
-            x = df_coords['Longitude'],
-            y = df_coords['Latitude'],
-            text = df_coords['text'],
-            mode = 'markers',
-            marker = dict(
-                size = 8,
-                opacity = 0.4,
-                reversescale = True,
-                autocolorscale = False,
-                symbol = 'circle',
-                line = dict(
-                    width=1,
-                    color='rgba(102, 102, 102)')))]
+    # data = [ dict(
+    #         type = 'bar',
+    #         showlegend = True,
+    #         x = df_coords['Coordinates'],
+    #         y = df_coords['Count'],
+    #         mode = 'markers',
+    #         marker = dict(
+    #             size = 8,
+    #             opacity = 0.4,
+    #             reversescale = True,
+    #             autocolorscale = False,
+    #             symbol = 'circle',
+    #             line = dict(
+    #                 width=1,
+    #                 color='rgba(102, 102, 102)')))]
+    #
+    # layout = dict(
+    #         title = 'Boulder Tweets',
+    #         hovermode='closest',
+    #         images = [dict(source = "https://raw.githubusercontent.com/mchandler13/BoulderView/master/data/images/Boulder.jpg",
+    #                   xref= "x",
+    #                   yref= "y",
+    #                   x= -105.4,
+    #                   y= 40.08,
+    #                   sizex= .3,
+    #                   sizey= .1,
+    #                   sizing= "stretch",
+    #                   opacity= 0.7,
+    #                   layer= "below")]
+    #     )
+    #
+    # fig = dict( data=data, layout=layout )
+    # py.plot(fig, validate=False, filename='thingy' )
 
-    layout = dict(
-            title = 'Boulder Tweets',
-            images = [dict(source = "https://raw.githubusercontent.com/mchandler13/BoulderView/master/Boulder.png",
-                      xref= "x",
-                      yref= "y",
-                      x= -105.4,
-                      y= 40.08,
-                      sizex= .3,
-                      sizey= .1,
-                      sizing= "stretch",
-                      opacity= 0.7,
-                      layer= "below")]
+
+    import plotly.plotly as py
+    import plotly.graph_objs as go
+
+    data = [
+        go.Scatter(
+            x=[0,1,2],
+            y=[4,6,4],
+            name='Number of Tweets per lcation',
+            marker=Marker(
+                color='#2ca02c'
+            )
         )
+    ]
 
-    fig = dict( data=data, layout=layout )
-    # py.plot(fig, validate=False, filename='d3-airports' )
+    layout = go.Layout(
+        title="Number of songs listed in the Guardian's<br><em>Top 1,000 Songs to Hear Before You Die</em> per artist with 4 or more songs",
+        font=dict(
+            family='Georgia, serif',
+            color='#635F5D'
+        ),
+        plot_bgcolor='#EFECEA'
+    )
+    fig = go.Figure(data=data, layout=layout)
+    plot_url = py.plot(fig)
+
+
 
 
 
