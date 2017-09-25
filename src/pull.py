@@ -21,7 +21,7 @@ def get_results(api):
     hashtags = ['#BoulderAthletes','#boulderlife','#Buffs','#BeBoulder','#FolsomField','#bouldercouncil','#CUBoulder','#boulderco','#boulder','#bouldercolorado','@bouldercolorado','@downtownboulder','@BoulderCountyOS','#chautauqua','#flatirons','#flatironsboulder','#beboulder','#pearlstreet']
     results = []
     for hashtag in hashtags:
-        results += api.GetSearch(term = hashtag,count = 100)
+        results += api.GetSearch(term = hashtag,count = 120)
     results += api.GetSearch(geocode = [40.0267216,-105.3030757,"2mi"],count = 100)
     return results
 
