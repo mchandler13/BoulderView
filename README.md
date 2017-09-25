@@ -26,7 +26,7 @@ After each pull, new data would be added into the dataframe, with any repeats be
 
 ## EDA
 Dropping all rows where coordinates were NaN, and then grouping the dataframe by coordinates, and getting the count of each feature. Then plotting the results over a map of Boulder, with the size of each marker indicating the number of tweets sent from each location. This created a new dataframe called df_coords, containing the counts of the Type column ("Photo or "Not Photo"). 
-<img alt="EDA_1" src="data/images/EDA_2.jpg" width='700' height = '450'><p style="text-align:center;">Made with [Seaborn](https://seaborn.pydata.org/)</p>
+<img alt="EDA_1" src="data/images/EDA_2.jpg" width='700' height = '450'><div style="text-align:center;">Made with [Seaborn](https://seaborn.pydata.org/)</div>
 
 
 
