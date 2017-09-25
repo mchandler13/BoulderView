@@ -27,4 +27,4 @@ After each pull, new data would be added into the dataframe, with any repeats be
 ### EDA
 Dropping all rows where coordinates were NaN, and then grouping the dataframe by coordinates, and getting the count of each feature. Then plotting the results over a map of Boulder, with the size of each marker indicating the number of tweets sent from each location.
 
-<img alt="EDA_1" src="data/images/EDA_1.jpg" width='800' height = '550'>
+<img alt="EDA_1" src="data/images/EDA_2.jpg" width='800' height = '550'>
