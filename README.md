@@ -3,7 +3,7 @@ Using social networks to predict where photos are being taken, based on the asso
 
 ## Table of Contents
 1. [Early Steps](#Early-Steps)
-   * [Gathering Data](#Gathering-Data)
+   * [Dataset](#Dataset)
    * [Building The Dataset](#Building-the-Dataset)
 2. [Acoustic Features of Speech](#acoustic-features-of-speech)
     * [Segmentation](#segmentation-code)
