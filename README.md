@@ -3,6 +3,8 @@ I will be predicting where photos are being taken in Boulder CO, based on the te
 
 ## Table of Contents
 1. [Early Steps](#Early-Steps)
+   * [Gathering Data](Gathering-Data)
+   * [Building The Dataset](Building-the-Dataset)
 2. [Acoustic Features of Speech](#acoustic-features-of-speech)
     * [Segmentation](#segmentation-code)
     * [Feature Extraction](#feature-extraction-code)
@@ -14,4 +16,4 @@ I will be predicting where photos are being taken in Boulder CO, based on the te
 3) Feature Engineering: Which features are important?
 
 
-<img alt="Initial Findings" src="data/images/EDA_1.jpg" width='800' height = '700'>
+<img alt="Initial Findings" src="data/images/EDA_1.jpg" width='800' height = '550'>
