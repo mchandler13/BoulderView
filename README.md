@@ -3,7 +3,7 @@ Using Twitter to predict where photos are being taken, based on the text associa
 
 ## Table of Contents
 1. [Early Steps](#early-steps)
-   * [Gathering Data](#gathering-the-data)
+   * [Gathering Data](#gathering-data)
    * [Building The Dataset](#building-the-dataset)
    * [EDA](#eda)
 
