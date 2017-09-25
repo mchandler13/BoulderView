@@ -12,3 +12,6 @@ I will be predicting where photos are being taken in Boulder CO, based on the te
 2) Creating a dataset
     * Pulling data from Twitter can be messy!
 3) Feature Engineering: Which features are important?
+
+
+<img alt="Initial Findings" src="images/interview_with_ellie.png" width='400'>
