@@ -2,10 +2,10 @@
 Using Twitter to predict where photos are being taken, based on the text associated with the picture. MORE HERE
 
 ## Table of Contents
-1. [Early Steps](#Early-Steps) <-- Figure out this issue
-   * [Gathering Data](#Gathering-The-Data)
-   * [Building The Dataset](#Building-the-Dataset)
-   * [EDA](#EDA)
+1. [Early Steps](#early-steps)
+   * [Gathering Data](#gathering-the-data)
+   * [Building The Dataset](#building-the-dataset)
+   * [EDA](#eda)
 
 
 ## Early Steps
