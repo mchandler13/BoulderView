@@ -1,6 +1,11 @@
 # BoulderView
 I will be predicting where photos are being taken in Boulder CO, based on the text associated with the picture.
 
+## Table of Contents
+1. [Early Steps](#Early-Steps)
+2. [Acoustic Features of Speech](#acoustic-features-of-speech)
+    * [Segmentation](#segmentation-code)
+    * [Feature Extraction](#feature-extraction-code)
 
 ## Early Steps
 1) Getting a Twitter API, and learning how to use it with Python.
