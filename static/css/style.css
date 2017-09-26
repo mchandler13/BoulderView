@@ -3,32 +3,34 @@ html {
     height: 100%;
     width: 100%;
 }
+#thePlot{
+  margin-top: 100px;
+  width: 80%;
+  height: 100%;
+  border:none;
+  z-index: -1;
+}
 
 body {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: #AA88AA;
+  background-color: #AA8844;
   margin-left: 0px;
 }
 #nav1{
   position: fixed;
+  z-index:1;
   top: 0px;
   width: 100%;
   text-align:center;
   overflow: hidden;
-  background-color: #0000FF;
+  background-color: #334455;
 }
 #nav1 > ul{
   list-style: none;
 }
-#plot{
-  margin-top: 90px;
-  width: 80%;
-  height: 100%;
-  border:none;
-  z-index: 2;
-}
+
 #there{
   position: absolute;
   left: 81%;

@@ -1,12 +1,13 @@
 <html lang="en">
   <head>
     <title>Boulder View</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <meta charset="utf-8">
     <meta name="author" content="Martin Chandler">
-    <meta name="description" content="an annoying maze game">
+    <meta name="description" content="Boulder View">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
   </head>
   <body>
     <nav id = "nav1">
@@ -17,12 +18,8 @@
         <li>Link 4</li>
       </ul>
     </nav>
-    <iframe id="plot" src="https://plot.ly/~martychandler13/8.embed" seamless></iframe>
-    <p id = "there">hello almost there</p>
-    <!-- <p id= stuff>Some text some text some text some text..</p>
-    <div id = myDiv>Hello</div>
-    <img id="hover-image" src="http://learnenglishteens.britishcouncil.org/sites/teens/files/rs6089_thinkstockphotos-146781001-low.jpg">
-    <p id="result">HELLOOOOO</p> -->
+    <div id="thePlot"></div>
+    <!-- <p>Some text some text some text some text..</p>
     <p>Some text some text some text some text..</p>
     <p>Some text some text some text some text..</p>
     <p>Some text some text some text some text..</p>
@@ -34,103 +31,49 @@
     <p>Some text some text some text some text..</p>
     <p>Some text some text some text some text..</p>
     <p>Some text some text some text some text..</p>
-    <p>Some text some text some text some text..</p>
-    <p>Some text some text some text some text..</p>
-    <div id="myDiv"></div>
-    <div id="hoverinfo" style="margin-left:80px;"></div>
+    <p>Some text some text some text some text..</p> -->
+
+    <div id="hoverinfo" style="  position: absolute;
+      left: 81%;
+      top: 130px;
+      z-index: 3;
+      border : none;
+      max-width: 200px;
+      max-height: 150px;
+      align: "middle";"></div>
     <script>
-    var myPlot = document.getElementById('plot');
-        // hoverInfo = document.getElementById('hoverinfo'),
-        // d3 = Plotly.d3,
-        // N = 16,
-        // x = d3.range(N),
-        // y1 = d3.range(N).map( d3.random.normal() ),
-        // data = [ { x:x, y:y1, type:'scatter', name:'Trial 1',
-        //     mode:'markers', marker:{size:16} }];
-        // layout = {
-        //     hovermode:'closest',
-        //     title:'Hover on Points'
-        //  };
+    var myPlot = document.getElementById('thePlot'),
+        hoverInfo = document.getElementById('hoverinfo'),
+        d3 = Plotly.d3,
+        x = {{data[0]}},
+        y1 = {{data[1]}},
+        y2 = {{data[2]}},
+        data = [ { x:x, y:y1, type:'scatter', name:'Boulder Tweets!!',
+            mode:'markers', marker:{size:4}, text:y2  }];
+        layout = {
+            hovermode:'closest',
+            title:'Boulder Tweets',
+            images: [{source: "https://raw.githubusercontent.com/mchandler13/BoulderView/master/data/images/Boulder.jpg",
+                      xref: "x",
+                      yref: "y",
+                      x: -105.4,
+                      y: 40.08,
+                      sizex: .3,
+                      sizey: .1,
+                      sizing: "stretch",
+                      opacity: 0.7,
+                      layer: "below"}]
+         };
 
 
-    // Plotly.plot('myDiv', data, layout);
+    Plotly.plot('thePlot', data, layout);
 
-    // myPlot.on('plotly_hover', function(data){
-    //     var infotext = data.points.map(function(d){
-    //       return (': x= '+d.x+', y= '+d.y.toPrecision(3));
-    //     });
-    //     document.getElementById("there").innerHTML = infotext.join('');
-    //   });
-
-    document.getElementById("there").innerHTML = myPlot.src
+    myPlot.on('plotly_hover', function(data){
+        var infotext = data.points.map(function(d){
+          return ('Number of Hashtags: '+d.text);
+        });
+        hoverInfo.innerHTML = infotext.join('');
+      });
     </script>
-
-
   </body>
-
-  <!-- <script>
-  (function main() {
-
-  var Plot = {
-      id: 'plot',
-      imgId: 'hover-image',
-      domain: 'https://plot.ly'
-  };
-
-  Plot.iframe = document.getElementById(Plot.id);
-  Plot.graphContentWindow = Plot.iframe.contentWindow;
-
-  Plot.hoverImg = document.getElementById(Plot.imgId);
-
-  Plot.init = function init() {
-      var pinger = setInterval(function() {
-          Plot.post({task: 'ping'});
-      }, 500);
-
-      function messageListener(e) {
-          var message = e.data;
-
-          if(message.pong) {
-              console.log('Initial pong, frame is ready to receive');
-              clearInterval(pinger);
-
-              Plot.post({
-                  'task': 'listen',
-                  'events': ['hover']
-              });
-          }
-          else if(message.type === 'hover') {
-              Plot.onHover(message);
-          }
-      }
-
-      window.removeEventListener('message', messageListener);
-      window.addEventListener('message', messageListener);
-  };
-
-  Plot.post = function post(o) {
-      Plot.graphContentWindow.postMessage(o, Plot.domain);
-  };
-
-  var artistToUrl = {'marty':'https://i.pinimg.com/736x/0a/8b/91/0a8b91f0bfbbcbc65fb7d43cd9ff4c78--grey-bunny-cutest-bunnies.jpg','ben':'http://www.petakids.com/wp-content/uploads/2015/11/Cute-Red-Bunny.jpg','greg':'https://i.pinimg.com/736x/35/e8/40/35e8407cca3a26188e78b75847b2d883--teddy-bears-fluffy-bunny.jpg'};
-
-
-  var blankImg = 'http://learnenglishteens.britishcouncil.org/sites/teens/files/rs6089_thinkstockphotos-146781001-low.jpg';
-
-  Plot.onHover = function(message) {
-      var artist = message.points[0].x
-          .toLowerCase()
-          .replace(/ /g, '-');
-
-      var imgSrc = blankImg;
-
-      if(artistToUrl[artist] !== undefined) imgSrc = artistToUrl[artist];
-
-      Plot.hoverImg.src = imgSrc;
-  };
-
-  Plot.init();
-
-  })();
-  </script> -->
 </html>

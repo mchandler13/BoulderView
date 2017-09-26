@@ -55,7 +55,9 @@ def coordinates_df(dataframe):
     df_coords['Count'] = df_coords['photo']+df_coords['Not_Specified']
     df_coords['Longitude'] = df_coords.Coordinates.apply(lambda x: x[0])
     df_coords['Latitude'] = df_coords.Coordinates.apply(lambda x: x[1])
+    df_coords["Num_Hashtags"] = df_coords.Hashtags.apply(lambda x: len(x))
     df_coords = df_coords[(df_coords['Longitude']>=-105.380894)&(df_coords['Longitude']<=-105.107185)&(df_coords['Latitude']>=39.978093)&(df_coords['Latitude']<=40.095651)]
+    df_coords = df_coords.reset_index()
     return df_coords
 
 def plot_first(dataframe):
@@ -136,16 +138,16 @@ if __name__ == '__main__':
     # layout = dict(
     #         title = 'Boulder Tweets',
     #         hovermode='closest',
-    #         images = [dict(source = "https://raw.githubusercontent.com/mchandler13/BoulderView/master/data/images/Boulder.jpg",
-    #                   xref= "x",
-    #                   yref= "y",
-    #                   x= -105.4,
-    #                   y= 40.08,
-    #                   sizex= .3,
-    #                   sizey= .1,
-    #                   sizing= "stretch",
-    #                   opacity= 0.7,
-    #                   layer= "below")]
+            # images = [dict(source = "https://raw.githubusercontent.com/mchandler13/BoulderView/master/data/images/Boulder.jpg",
+            #           xref= "x",
+            #           yref= "y",
+            #           x= -105.4,
+            #           y= 40.08,
+            #           sizex= .3,
+            #           sizey= .1,
+            #           sizing= "stretch",
+            #           opacity= 0.7,
+            #           layer= "below")]
     #     )
     #
     # fig = dict( data=data, layout=layout )
@@ -175,7 +177,7 @@ if __name__ == '__main__':
         plot_bgcolor='#EFECEA'
     )
     fig = go.Figure(data=data, layout=layout)
-    plot_url = py.plot(fig)
+    # plot_url = py.plot(fig)
 
 
 
