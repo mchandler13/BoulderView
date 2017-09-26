@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from src.visuals import load,coordinates_df
+import numpy as np
 df = load('data/tweets.txt')
 df_coords = coordinates_df(df)
 
@@ -20,7 +21,11 @@ def index():
 
 @app.route('/predict',methods = ['GET','POST'])
 def predict():
-    return  render_template("predict.html")
+    i = np.random.randint(df_coords.Hashtags.shape[0])
+    h = df_coords.Hashtags[i]
+    c = df_coords.Coordinates[i]
+    l = len(h)
+    return  render_template("predict.html",data = [i,h,c,l])
 # no more routing blocks
 
 if __name__ == '__main__':
