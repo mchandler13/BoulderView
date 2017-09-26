@@ -15,8 +15,12 @@ app = Flask(__name__)  # instantiate a flask app object
 # the name of the function that will be executed at '/'. Its name is arbitrary.
 def index():
     d = [list(df_coords["Longitude"]),list(df_coords["Latitude"]),list(df_coords["Num_Hashtags"])]
+    # d = [list(df_coords["Longitude"]),list(df_coords["Latitude"]),df_coords[["Num_Hashtags","photo","Not_Specified"]]]
     return render_template('home.html',data = d)
 
+@app.route('/predict',methods = ['GET','POST'])
+def predict():
+    return  render_template("predict.html")
 # no more routing blocks
 
 if __name__ == '__main__':
