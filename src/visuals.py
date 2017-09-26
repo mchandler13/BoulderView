@@ -46,14 +46,17 @@ def text_df(dataframe):
 def coordinates_df(dataframe):
     df = dataframe
     df['Coordinates'] = df[['Longitude', 'Latitude']].apply(lambda x: tuple(x), axis=1)
-    df_coords = df[df.Longitude.notnull()]
-    df_dum = pd.get_dummies(df_coords['Type'])
+    # was here
+    df_dum = pd.get_dummies(df['Type'])
 
-    df_coords = pd.concat([df_coords,df_dum],axis = 1)
+
+    df_coords = pd.concat([df,df_dum],axis = 1)
+    df_coords = df_coords[df_coords.Longitude.notnull()]
     df_coords.drop('Type',axis = 1,inplace = True)
-    df_coords = df_coords.groupby('Coordinates').agg({'photo':sum,'Not_Specified':sum,'Hashtags':sum}).reset_index('Coordinates')
-    df_coords = df_coords[['Coordinates','photo','Not_Specified','Hashtags']]
-    df_coords['Count'] = df_coords['photo']+df_coords['Not_Specified']
+    df_coords = df_coords.groupby('Coordinates').agg({'photo':sum,'Not_Specified':sum,'video':sum,'animated_gif':sum,'Hashtags':sum}).reset_index('Coordinates')
+    df_coords['not_photo'] = df_coords['Not_Specified']+df_coords['video']+df_coords['animated_gif']
+    df_coords = df_coords[['Coordinates','photo','not_photo','Hashtags']]
+    df_coords['Count'] = df_coords['photo']+df_coords['not_photo']
     df_coords['Longitude'] = df_coords.Coordinates.apply(lambda x: x[0])
     df_coords['Latitude'] = df_coords.Coordinates.apply(lambda x: x[1])
     df_coords["Num_Hashtags"] = df_coords.Hashtags.apply(lambda x: len(x))
@@ -111,7 +114,7 @@ if __name__ == '__main__':
     df = load('../data/tweets.txt')
     df_coords = coordinates_df(df)
     # dfc = df_coords[df_coords['Count']>=2].reset_index()
-    plot_first(df_coords)
+    # plot_first(df_coords)
     # plotly_plot(df_coords)
     # df_hashtags = hashtag_df(df)
     # df_pics = pictures_df(df)
