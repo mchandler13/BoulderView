@@ -37,9 +37,9 @@ def text_df(dataframe):
     df_dum = pd.get_dummies(df['Type'])
     df = pd.concat([df,df_dum],axis = 1)
     df.drop('Type',axis = 1,inplace = True)
-    df['Text'] = df['Text'].apply(lambda x: x.split(" "))
+    # df['Text'] = df['Text'].apply(lambda x: x.split(" "))
     df = df.groupby('Coordinates').agg({'Text':sum}).reset_index()
-    df['Text'] = df['Text'].apply(lambda x: Counter(x).most_common(1)[0])
+    # df['Text'] = df['Text'].apply(lambda x: Counter(x).most_common(1)[0])
     return df
 
 
@@ -118,7 +118,7 @@ if __name__ == '__main__':
     # plotly_plot(df_coords)
     # df_hashtags = hashtag_df(df)
     # df_pics = pictures_df(df)
-    # df_text = text_df(df)
+    df_text = text_df(df)
     #
     #
     # df_coords['text'] =df_coords['Count'].astype(str)

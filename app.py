@@ -1,8 +1,11 @@
 from flask import Flask, render_template
 from src.visuals import load,coordinates_df
+from src.model import final
 import numpy as np
 df = load('data/tweets.txt')
 df_coords = coordinates_df(df)
+
+
 
 
 # initialize the Flask app, note that all routing blocks use @app
@@ -16,7 +19,6 @@ app = Flask(__name__)  # instantiate a flask app object
 # the name of the function that will be executed at '/'. Its name is arbitrary.
 def index():
     d = [list(df_coords["Longitude"]),list(df_coords["Latitude"]),list(df_coords["Num_Hashtags"])]
-    # d = [list(df_coords["Longitude"]),list(df_coords["Latitude"]),df_coords[["Num_Hashtags","photo","Not_Specified"]]]
     return render_template('home.html',data = d)
 
 @app.route('/predict',methods = ['GET','POST'])
@@ -25,7 +27,8 @@ def predict():
     h = df_coords.Hashtags[i]
     c = df_coords.Coordinates[i]
     l = len(h)
-    return  render_template("predict.html",data = [i,h,c,l])
+    f = final[0]
+    return render_template("predict.html",data = [i,h,c,l,f])
 # no more routing blocks
 
 if __name__ == '__main__':

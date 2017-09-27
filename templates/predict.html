@@ -8,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
   </head>
+
+
+
   <nav id = "nav1">
     <ul class = "inline1">
       <li><a href="/">home</a></li>
@@ -18,7 +21,7 @@
   </nav>
   <body id = "predictBody">
     <div id = "firstText">
-      <button onclick = "doSomething()" id = "firstButton">Get a Location!</button>
+      <button onclick = "getLoc()" id = "firstButton">Get a Location!</button>
       <button onclick = "rel()">Go Again</button>
     </div>
     <div>ID will go here</div>
@@ -28,20 +31,23 @@
         <th>ID</th>
         <th>Coordinates</th>
         <th>Number of Hashtags</th>
+        <th>Prediction</th>
       </tr>
       <tr>
         <td id = "locID"></td>
         <td id = "locCoords"></td>
         <td id = "locNumHashtags"></td>
+        <td id = "locFinal"></td>
       </tr>
     </table>
   </body>
   <script>
-    function doSomething() {
+    function getLoc() {
       locID.innerHTML = "{{data[0]}}";
       locCoords.innerHTML = "{{data[2]}}";
       locNumHashtags.innerHTML = "{{data[3]}}";
-      thirdText.innerHTML = "Here ia a list of the Hashtags: <br>{{data[1]}}";
+      locFinal.innerHTML = "{{data[4]}}";
+      thirdText.innerHTML = "Here is a list of the Hashtags: <br>{{data[1]}}";
       document.getElementById("displayTable").style.visibility = "visible";
     }
     function rel(){
