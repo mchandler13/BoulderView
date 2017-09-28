@@ -13,6 +13,8 @@ Originally, I was going to be using A database from the City Of Boulder, but non
 
 ### Gathering Data
 Pulling Data every hour, and loading it into a .txt file, gaining roughly 1000 lines at each pull. Much of this data would be missing information, such as latitude/longitude.
+
+
 ### Building The Dataset
 After each pull, new data would be added into the dataframe, with any repeats being omitted. The fetures I'm using are as follows:
 * **ID**: The Tweet ID
@@ -24,6 +26,7 @@ After each pull, new data would be added into the dataframe, with any repeats be
 * **Hashtags**: The hashtags associated with the tweet
 * **Created_At**: The date/time when the tweet was posted
 * **Coordinates**: the longitude/latitude coordinates of the tweet
+<img alt="AsDict" src="data/images/AsDict.jpg" width='700' height = '450'>
 
 ## EDA
 Dropping all rows where coordinates were NaN, and then grouping the dataframe by coordinates, and getting the count of each feature. Then plotting the results over a map of Boulder, with the size of each marker indicating the number of tweets sent from each location. This created a new dataframe called df_coords, containing the counts of the Type column ("Photo or "Not Photo"). 
@@ -39,4 +42,4 @@ Moving forward, I knew I'd be using interactive plots, so I looked into a few:
 
 Decided to use Plotly, due to it's ease of use, and ability to interact with webapps. [Here](https://plot.ly/~martychandler13/8.embed) is an early example using Plotly. It's simple to use, and has built-in hover properties. MIGHT SWITCH TO FOLIUM IF TIME
 
-AsDict() picture of this
+
