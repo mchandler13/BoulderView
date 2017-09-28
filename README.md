@@ -7,8 +7,8 @@ In coordination with the City Of Boulder, I will be using Twitter to predict whe
    * [Building The Dataset](#building-the-dataset)
    * [EDA](#eda)
 2. [The Model](#the-model)
-  * [First Model](#first-model)
-3.[Web Application](#web-application)
+   * [First Model](#first-model)
+3. [Web Application](#web-application)
 
 
 ## Early Steps
