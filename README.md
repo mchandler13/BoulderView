@@ -6,9 +6,10 @@ In coordination with the City Of Boulder, I will be using Twitter to predict whe
    * [Gathering Data](#gathering-data)
    * [Building The Dataset](#building-the-dataset)
    * [EDA](#eda)
-2. [The Model](#the-model)
+2. [NLP](#nlp)
+3. [The Model](#the-model)
    * [First Model](#first-model)
-3. [Web Application](#web-application)
+4. [Web Application](#web-application)
 
 
 ## Early Steps
@@ -44,6 +45,10 @@ Moving forward, I knew I'd be using interactive plots, so I looked into a few:
 * [Folium](https://folium.readthedocs.io/en/latest/) Useful for mapping data
 
 Decided to use Plotly, due to it's ease of use, and ability to interact with webapps. [Here](https://plot.ly/~martychandler13/8.embed) is an early example using Plotly. It's simple to use, and has built-in hover properties. MIGHT SWITCH TO FOLIUM IF TIME
+
+
+# NLP
+NLP stands for Natural Language Processing. It is a field of Computer Science that allows computers to make sense of everyday (human) language. MAYBE ADD A FEW LINKS TO EXAMPLES HERE. I will be using NLP, because every Tweet has text associated with it, and I will be able to make predictions regarding a new Tweet based on the text of existing tweets.
 
 # The Model
 
