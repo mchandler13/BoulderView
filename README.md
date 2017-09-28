@@ -51,7 +51,7 @@ Decided to use Plotly, due to it's ease of use, and ability to interact with web
 Using tfidfVectorizer I created a Matrix of cosine similarities. Low accuracy, but haven't made any adjustments to it yet, and the dataset is still pretty small. Also, I'm only using the text of the tweet (I haven't done anything with Hashtags yet)
 
 
-### Web Application
+# Web Application
 
 Home page displays a map of Boulder with Hover effects
 
