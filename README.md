@@ -47,7 +47,7 @@ Decided to use Plotly, due to it's ease of use, and ability to interact with web
 
 # The Model
 
-## First model
+## First Model
 Using tfidfVectorizer I created a Matrix of cosine similarities. Low accuracy, but haven't made any adjustments to it yet, and the dataset is still pretty small. Also, I'm only using the text of the tweet (I haven't done anything with Hashtags yet)
 
 
