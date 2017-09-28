@@ -53,7 +53,7 @@ Using tfidfVectorizer I created a Matrix of cosine similarities. Low accuracy, b
 
 # Web Application
 
-Home page displays a map of Boulder with Hover effects
+[Home](https://seaborn.pydata.org/) page displays a map of Boulder with Hover effects
 
 Predict Page makes a prediction as to the location of the tweet. Ultimately, there will be a map that shows the predicted point and the actual point (if present), and the error associated
 
