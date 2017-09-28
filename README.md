@@ -64,3 +64,6 @@ Using tfidfVectorizer I created a Matrix of cosine similarities. Low accuracy, b
 
 **Interesting issue** converting longitude/latitude to miles is a challenge
 
+
+
+
