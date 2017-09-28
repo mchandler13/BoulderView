@@ -79,6 +79,8 @@ html {
   overflow: hidden;
 }
 
+
+
 #hoverinfo {
   border-radius: 10px;
   border-style: solid;
@@ -93,14 +95,15 @@ html {
   z-index: 3;
 }
 
+
 #predictBody{
   background-image: url("https://raw.githubusercontent.com/mchandler13/BoulderView/master/data/images/flatirons.jpg");
   background-size:100% 100%;
 }
 
-#predictBody  div{
-  /*height:50px;*/
-  width:20%;
+.info{
+  width:80%;
+  height:30px;
   position:relative;
   left:5%;
   top: 15%;
@@ -108,9 +111,9 @@ html {
   opacity: 0.8;
   color: #FFFFFF;
 }
-#predictBody  table{
+#predictBody>table{
   height:50px;
-  width:40%;
+  width:70%;
   position:relative;
   left:30%;
   top: 15%;

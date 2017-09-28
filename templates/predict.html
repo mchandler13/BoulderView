@@ -7,47 +7,37 @@
     <meta name="description" content="Boulder View">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="icon" href="https://raw.githubusercontent.com/mchandler13/BoulderView/master/data/images/flatirons.jpg">
   </head>
 
 
-
-  <nav id = "nav1">
-    <ul class = "inline1">
-      <li><a href="/">home</a></li>
-      <li><a href="predict">predict</a></li>
-      <li><a href="#cool">cool</a></li>
-      <li><a href="#other">other</a></li>
-    </ul>
-  </nav>
   <body id = "predictBody">
-    <div id = "firstText">
+    <nav id = "nav1">
+      <ul class = "inline1">
+        <li><a href="/">Home</a></li>
+        <li><a href="predict">Predict</a></li>
+        <li><a href="#cool">cool</a></li>
+        <li><a href="#other">other</a></li>
+      </ul>
+    </nav>
+
+
+
+    <div id = "firstText" class = "info">
       <button onclick = "getLoc()" id = "firstButton">Get a Location!</button>
       <button onclick = "rel()">Go Again</button>
     </div>
-    <div>ID will go here</div>
-    <div id = "thirdText">Hashtags will go here</div>
-    <table id = "displayTable">
-      <tr>
-        <th>ID</th>
-        <th>Coordinates</th>
-        <th>Number of Hashtags</th>
-        <th>Prediction</th>
-      </tr>
-      <tr>
-        <td id = "locID"></td>
-        <td id = "locCoords"></td>
-        <td id = "locNumHashtags"></td>
-        <td id = "locFinal"></td>
-      </tr>
-    </table>
+    <!-- <div id="locText">Text: </div> -->
+    <div id = "predCoord" class = "info">Predicted Coordinates: </div>
+    <div id = "actCoord" class = "info">Actual Coordinates: </div>
+    <div id = "error" class = "info">Error: </div>
   </body>
   <script>
-    function getLoc() {
-      locID.innerHTML = "{{data[0]}}";
-      locCoords.innerHTML = "{{data[2]}}";
-      locNumHashtags.innerHTML = "{{data[3]}}";
-      locFinal.innerHTML = "{{data[4]}}";
-      thirdText.innerHTML = "Here is a list of the Hashtags: <br>{{data[1]}}";
+    function getLoc(){
+      // locText.innerHTML = "Text: {{data[0]}}";
+      predCoord.innerHTML = "Predicted Coordinates: {{data[1]}}";
+      actCoord.innerHTML = "Actual Coordinates: {{data[2]}}";
+      error.innerHTML = "Error: {{data[3]}}";
       document.getElementById("displayTable").style.visibility = "visible";
     }
     function rel(){
