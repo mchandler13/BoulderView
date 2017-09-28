@@ -6,6 +6,9 @@ In coordination with the City Of Boulder, I will be using Twitter to predict whe
    * [Gathering Data](#gathering-data)
    * [Building The Dataset](#building-the-dataset)
    * [EDA](#eda)
+2. [The Model](#the-model)
+  * [First Model](first-model)
+3.[Web Application](#web-application)
 
 
 ## Early Steps
@@ -42,7 +45,7 @@ Moving forward, I knew I'd be using interactive plots, so I looked into a few:
 
 Decided to use Plotly, due to it's ease of use, and ability to interact with webapps. [Here](https://plot.ly/~martychandler13/8.embed) is an early example using Plotly. It's simple to use, and has built-in hover properties. MIGHT SWITCH TO FOLIUM IF TIME
 
-### The Model
+# The Model
 
 ## First model
 Using tfidfVectorizer I created a Matrix of cosine similarities. Low accuracy, but haven't made any adjustments to it yet, and the dataset is still pretty small. Also, I'm only using the text of the tweet (I haven't done anything with Hashtags yet)
