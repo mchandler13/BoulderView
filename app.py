@@ -74,7 +74,7 @@ def get_top_values(lst, n, labels):
 #     print("\n")
 
 def final():
-    return [get_top_values(cosine_similarities[i], 2, titles) for i in range(len(X_test))]
+    return [get_top_values(cosine_similarities[i], 1, titles) for i in range(len(X_test))]
 
 y_pred = final()
 
