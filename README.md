@@ -1,5 +1,5 @@
 # BoulderView
-Using Twitter to predict where photos are being taken, based on the text associated with the picture. MORE HERE
+In coordination with the City Of Boulder, I will be using Twitter to predict where photos are being taken, based on the text associated with the picture. 
 
 ## Table of Contents
 1. [Early Steps](#early-steps)
@@ -9,7 +9,8 @@ Using Twitter to predict where photos are being taken, based on the text associa
 
 
 ## Early Steps
-I decided on Twitter, due to the simlicity of it's API. After gaining access, it was very easy to get the relevant information.
+Originally, I was going to be using A database from the City Of Boulder, but none of the files contained Geocode information. I investigated the APIs of Facebook, Twitter, and Instagram. Facebook wasn't allowing access at the time, and I still haven't heard back from Instagram, but Twitter has been extremely helpful. The API is very easy to us, and provides a wealth of information.
+
 ### Gathering Data
 Pulling Data every hour, and loading it into a .txt file, gaining roughly 1000 lines at each pull. Much of this data would be missing information, such as latitude/longitude.
 ### Building The Dataset
@@ -32,10 +33,10 @@ Made with [Seaborn](https://seaborn.pydata.org/)
 
 
 Moving forward, I knew I'd be using interactive plots, so I looked into a few:
-* [Bokeh](https://bokeh.pydata.org/en/latest/) EXPLANATIONS OF THIS
-* [Plotly](https://plot.ly/) EXPLANATIONS OF THIS 
-* [Folium](https://folium.readthedocs.io/en/latest/) EXPLANATIONS OF THIS
+* [Bokeh](https://bokeh.pydata.org/en/latest/) Useful for Visualization of large datasets
+* [Plotly](https://plot.ly/) Creates dashboards for web applicastions
+* [Folium](https://folium.readthedocs.io/en/latest/) Useful for mapping data
 
-Decided to use Plotly, due to it's ease of use, and ability to interact with webapps. [Here](https://plot.ly/~martychandler13/8.embed) is an early example using Plotly. It's simple to use, and has built-in hover properties. BOULDER MAP IS NOT APPEARING UNDER SCATTER PLOT, FIX THIS.
+Decided to use Plotly, due to it's ease of use, and ability to interact with webapps. [Here](https://plot.ly/~martychandler13/8.embed) is an early example using Plotly. It's simple to use, and has built-in hover properties. MIGHT SWITCH TO FOLIUM IF TIME
 
 AsDict() picture of this
