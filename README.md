@@ -42,4 +42,17 @@ Moving forward, I knew I'd be using interactive plots, so I looked into a few:
 
 Decided to use Plotly, due to it's ease of use, and ability to interact with webapps. [Here](https://plot.ly/~martychandler13/8.embed) is an early example using Plotly. It's simple to use, and has built-in hover properties. MIGHT SWITCH TO FOLIUM IF TIME
 
+### The Model
+
+## First model
+Using tfidfVectorizer I created a Matrix of cosine similarities. Low accuracy, but haven't made any adjustments to it yet, and the dataset is still pretty small. Also, I'm only using the text of the tweet (I haven't done anything with Hashtags yet)
+
+
+### Web Application
+
+Home page displays a map of Boulder with Hover effects
+
+Predict Page makes a prediction as to the location of the tweet. Ultimately, there will be a map that shows the predicted point and the actual point (if present), and the error associated
+
+**Interesting issue** converting longitude/latitude to miles is a challenge
 
