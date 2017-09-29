@@ -31,12 +31,13 @@
     <div id = "predCoord" class = "info">Predicted Coordinates: </div>
     <div id = "actCoord" class = "info">Actual Coordinates: </div>
     <div id = "error" class = "info">Error: </div>
+    <div class = "info"><a href="/map.html">HMap</a></div>
   </body>
   <script>
     function getLoc(){
       // locText.innerHTML = "Text: {{data[0]}}";
-      predCoord.innerHTML = "Predicted Coordinates: {{data[1]}}";
-      actCoord.innerHTML = "Actual Coordinates: {{data[2]}}";
+      predCoord.innerHTML = "Predicted Coordinates: {% for i in data[1] %} <br>{{i}} {% endfor %}";
+      actCoord.innerHTML = "Actual Coordinates:<br> {{data[2]}}";
       error.innerHTML = "Error: {{data[3]}}";
       document.getElementById("displayTable").style.visibility = "visible";
     }

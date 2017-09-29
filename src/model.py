@@ -1,7 +1,6 @@
-from dataframes import load,text_df
+# from dataframes import load
 import numpy as np
 
-from pymongo import MongoClient, errors
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem.porter import PorterStemmer
@@ -13,16 +12,22 @@ from sklearn.metrics.pairwise import linear_kernel
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.cross_validation import train_test_split
 import pandas as pd
-import matplotlib.pyplot as plt
 
 class TextModel(object):
-    def __init__(self):
-        df = load('../data/tweets.txt')
+    def __init__(self, filename):
+        # self.filename = filename
+        self.df = self._initialize(filename)
+
+    def _initialize(self,filename):
+        df = pd.read_csv(filename)
+        df = df.drop_duplicates('Text').reset_index()
+        df['Hashtags'] = df.Hashtags.apply(lambda x: x[1:-1].replace("'","").split(", "))
+        df['Hashtags'] = df.Hashtags.apply(lambda x: [] if '#' not in x[0] else x)
         df['Coordinates'] = df[['Longitude', 'Latitude']].apply(lambda x: tuple(x), axis=1)
         df = df[df.Longitude.notnull()]
         df = df[(df['Longitude']>=-105.380894)&(df['Longitude']<=-105.107185)&(df['Latitude']>=39.978093)&(df['Latitude']<=40.095651)]
         df = df[['Coordinates','Text']].reset_index(drop = True)
-        self.df = df
+        return df
 
     def get_X_y(self):
         X = list(self.df.Text)
@@ -45,36 +50,16 @@ class TextModel(object):
         self.titles = self.y_train
 
     def predict(self,n):
-        self.y_pred =  [[self.titles[k] for k in np.argsort(self.cosine_similarities[i])[-1:-n-1:-1]][:n] for i in range(len(self.X_test))]
+        self.hold =  [[self.titles[k] for k in np.argsort(self.cosine_similarities[i])[:1:-1]] for i in range(len(self.X_test))]
+        self.y_pred = []
+        for i in self.hold:
+            temp = []
+            for j in i:
+                if j not in temp:
+                    temp.append(j)
+            self.y_pred.append(temp)
+        self.y_pred = [x[:n] for x in self.y_pred]
 
-
-
-    # def accuracies(self, N = 5):
-    #     accuracies = []
-    #     for t in range(1,6):
-    #         y_pred = [[self.titles[k] for k in np.argsort(self.cosine_similarities[i])[-1:-t-1:-1]][:t] for i in range(len(self.X_test))]
-    #         c = 0
-    #         for i in range(len(self.y_test)):
-    #             if self.y_test[i] in y_pred[i]:
-    #                 c+=1
-    #         acc = c/len(self.y_test)
-    #         accuracies.append(acc)
-    #         print("Accuracy for {} value(s): {}".format(t,acc))
-
-
-
-
-
-#
-# def rmse(y_pred,y):
-#     r = [((y_pred[i][0]-y[i][0])**2 +(y_pred[i][0]-y[i][0])**2)**.5 for i in range(len(y))]
-#     return np.sum(r)/len(r)
-    # return r
-
-
-if __name__ == '__main__':
-    tm = TextModel()
-    tm.get_X_y()
-    tm.split()
-    tm.vectorize()
-    tm.predict(2)
+    def variables(self):
+        self.truth = [self.y_test[i] in self.y_pred[i] for i in range(len(self.y_test))]
+        return self.X_train, self.X_test, self.y_train, self.y_test, self.y_pred, self.truth

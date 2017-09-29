@@ -101,25 +101,15 @@ html {
   background-size:100% 100%;
 }
 
-.info{
-  width:50%;
-  height:30px;
-  position:relative;
-  left:5%;
-  top: 15%;
-  background-color: #000000;
-  opacity: 0.8;
-  color: #FFFFFF;
-}
-#predictBody>table{
-  height:50px;
-  width:70%;
-  position:relative;
-  left:30%;
-  top: 15%;
-  background-color: #000000;
-  opacity: 0.8;
-  color: #FFFFFF;
+.info {
+    width: 35%;
+    position: relative;
+    left: 0%;
+    top: 15%;
+    background-color: #000000;
+    opacity: 0.8;
+    color: #FFFFFF;
+    padding: 14px 3px;
 }
 #displayTable{
   visibility: hidden;

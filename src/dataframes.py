@@ -123,6 +123,15 @@ if __name__ == '__main__':
     #
     # df_coords['text'] =df_coords['Count'].astype(str)
 
+    # import folium
+    # # location=[40.036872, -105.2440395]
+    # map_osm = folium.Map(location=[40, -105.25],tiles = 'Stamen Terrain',zoom_start = 13)
+    # lat = df_coords.Latitude
+    # lon = df_coords.Longitude
+    # c = df_coords.Count
+    # for i in range(len(lon)):
+    #     folium.Marker([lat[i],lon[i]],icon=folium.Icon(color='#FF0000'),popup=str(c[i])).add_to(map_osm)
+    # map_osm.save('/Users/Marty/Desktop/map.html')
 
 
 
