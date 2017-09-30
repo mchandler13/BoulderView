@@ -25,6 +25,23 @@ tm.split()
 tm.vectorize()
 tm.predict(N)
 X_train, X_test, y_train, y_test, y_pred, truth = tm.variables()
+accuracy = tm.acc()
+
+
+# df = load('data/tweets.txt')
+# df_coords = coordinates_df(df)
+# tm = TextModel('data/tweets.txt')
+#
+#
+# acc = []
+# ind = list(range(1,31))
+# for i in ind:
+#     tm.get_X_y()
+#     tm.split()
+#     tm.vectorize()
+#     tm.predict(i)
+#     X_train, X_test, y_train, y_test, y_pred, truth = tm.variables()
+#     acc.append(tm.accuracy())
 
 """ BAD"""
 import folium
@@ -66,18 +83,19 @@ def predict():
 
     map_osm = folium.Map(location=[40, -105.25],tiles = 'Stamen Terrain',zoom_start = 13)
     lon, lat = zip(*y_pred[i])
+    r = list(range(1,len(lon)+1))
     for k in range(len(lon)):
-        folium.Marker([lat[k],lon[k]],icon=folium.Icon(color='red'),popup='Timberline Lodge').add_to(map_osm)
+        folium.Marker([lat[k],lon[k]],icon=folium.Icon(color='red'),popup=str(r[k])).add_to(map_osm)
     # folium.Marker(,icon=folium.Icon(color='blue'),popup='Actual Location').add_to(map_osm)
     folium.CircleMarker([y_test[i][1],y_test[i][0]],
-                    radius=20,
+                    radius=10,
                     popup='Actual Location',
                     color='#3186cc',
-                    fill_color='#3186cc',
+                    fill_color='#3186cc'
                    ).add_to(map_osm)
     map_osm.save('templates/map.html')
     # e = ((y_pred[i][0]-y_test[i][0])**2 +(y_pred[i][0]-y_test[i][0])**2)**.5
-    return render_template("predict.html",data = [X_test[i],y_pred[i],y_test[i],truth[i]])
+    return render_template("predict.html",data = [X_test[i],y_pred[i],y_test[i],truth[i],accuracy])
 # no more routing blocks
 
 @app.route('/map', methods = ['GET', 'POST'])  # GET is the default, more about GET and POST below

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<head>
+<head>    
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <script>L_PREFER_CANVAS = false; L_NO_TOUCH = false; L_DISABLE_3D = false;</script>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.2.0/dist/leaflet.js"></script>
@@ -14,8 +14,8 @@
     <link rel="stylesheet" href="https://rawgit.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css" />
     <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
     <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-
-            <style> #map_de39f2c6ba8a471fa791a669908f7ad2 {
+    
+            <style> #map_4eb51142afcc4375a2a39286b6d67bba {
                 position : relative;
                 width : 100.0%;
                 height: 100.0%;
@@ -23,22 +23,22 @@
                 top: 0.0%;
                 }
             </style>
-
+        
 </head>
-<body>
-
-            <div class="folium-map" id="map_de39f2c6ba8a471fa791a669908f7ad2" ></div>
-
+<body>    
+    
+            <div class="folium-map" id="map_4eb51142afcc4375a2a39286b6d67bba" ></div>
+        
 </body>
-<script>
+<script>    
+    
 
-
-
+            
                 var bounds = null;
+            
 
-
-            var map_de39f2c6ba8a471fa791a669908f7ad2 = L.map(
-                                  'map_de39f2c6ba8a471fa791a669908f7ad2',
+            var map_4eb51142afcc4375a2a39286b6d67bba = L.map(
+                                  'map_4eb51142afcc4375a2a39286b6d67bba',
                                   {center: [40,-105.25],
                                   zoom: 13,
                                   maxBounds: bounds,
@@ -46,10 +46,10 @@
                                   worldCopyJump: false,
                                   crs: L.CRS.EPSG3857
                                  });
-
-
-
-            var tile_layer_acc95b278bac44e085df3066d0f5289f = L.tileLayer(
+            
+        
+    
+            var tile_layer_7596c4850f6c4dbd94fc3ddfe2687e15 = L.tileLayer(
                 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.jpg',
                 {
   "attribution": null,
@@ -59,110 +59,110 @@
   "noWrap": false,
   "subdomains": "abc"
 }
-                ).addTo(map_de39f2c6ba8a471fa791a669908f7ad2);
+                ).addTo(map_4eb51142afcc4375a2a39286b6d67bba);
+        
+    
 
-
-
-            var marker_04e7169cdd79445e85dbf6a39232f8eb = L.marker(
+            var marker_e89a5e782c8d4eb393dc83c742b10616 = L.marker(
                 [40.0149856,-105.2705456],
                 {
                     icon: new L.Icon.Default()
                     }
                 )
-                .addTo(map_de39f2c6ba8a471fa791a669908f7ad2);
+                .addTo(map_4eb51142afcc4375a2a39286b6d67bba);
+            
+    
 
-
-
-                var icon_416348f523df4936aa5d8f59367791fd = L.AwesomeMarkers.icon({
+                var icon_72d12fd6806a4ec2847b046a44efc911 = L.AwesomeMarkers.icon({
                     icon: 'info-sign',
                     iconColor: 'white',
                     markerColor: 'red',
                     prefix: 'glyphicon',
                     extraClasses: 'fa-rotate-0'
                     });
-                marker_04e7169cdd79445e85dbf6a39232f8eb.setIcon(icon_416348f523df4936aa5d8f59367791fd);
+                marker_e89a5e782c8d4eb393dc83c742b10616.setIcon(icon_72d12fd6806a4ec2847b046a44efc911);
+            
+    
+            var popup_b96f0513fa344b85b24bbfda5e8b7072 = L.popup({maxWidth: '300'});
 
+            
+                var html_07e4cbacb3b3423e8b40ec494733a4e5 = $('<div id="html_07e4cbacb3b3423e8b40ec494733a4e5" style="width: 100.0%; height: 100.0%;">1</div>')[0];
+                popup_b96f0513fa344b85b24bbfda5e8b7072.setContent(html_07e4cbacb3b3423e8b40ec494733a4e5);
+            
 
-            var popup_3d96a9a0f0d94847b4734633355f5f20 = L.popup({maxWidth: '300'});
+            marker_e89a5e782c8d4eb393dc83c742b10616.bindPopup(popup_b96f0513fa344b85b24bbfda5e8b7072);
 
+            
+        
+    
 
-                var html_de14f18fb2c54dfab33372ecb5b89a7f = $('<div id="html_de14f18fb2c54dfab33372ecb5b89a7f" style="width: 100.0%; height: 100.0%;">Timberline Lodge</div>')[0];
-                popup_3d96a9a0f0d94847b4734633355f5f20.setContent(html_de14f18fb2c54dfab33372ecb5b89a7f);
+            var marker_90ba48415ee642ecaabb591486372a12 = L.marker(
+                [39.9799992,-105.248737],
+                {
+                    icon: new L.Icon.Default()
+                    }
+                )
+                .addTo(map_4eb51142afcc4375a2a39286b6d67bba);
+            
+    
 
+                var icon_9007cbd7cbdb473c8b92fba21ed6dfef = L.AwesomeMarkers.icon({
+                    icon: 'info-sign',
+                    iconColor: 'white',
+                    markerColor: 'red',
+                    prefix: 'glyphicon',
+                    extraClasses: 'fa-rotate-0'
+                    });
+                marker_90ba48415ee642ecaabb591486372a12.setIcon(icon_9007cbd7cbdb473c8b92fba21ed6dfef);
+            
+    
+            var popup_1cf017a7a52041aa8dcfbfd7e0351467 = L.popup({maxWidth: '300'});
 
-            marker_04e7169cdd79445e85dbf6a39232f8eb.bindPopup(popup_3d96a9a0f0d94847b4734633355f5f20);
+            
+                var html_1e144c5c651542038e46eebd7852c189 = $('<div id="html_1e144c5c651542038e46eebd7852c189" style="width: 100.0%; height: 100.0%;">2</div>')[0];
+                popup_1cf017a7a52041aa8dcfbfd7e0351467.setContent(html_1e144c5c651542038e46eebd7852c189);
+            
 
+            marker_90ba48415ee642ecaabb591486372a12.bindPopup(popup_1cf017a7a52041aa8dcfbfd7e0351467);
 
+            
+        
+    
 
-
-
-            var marker_99f2e62a5df74ce3a7e55170a41e804e = L.marker(
+            var marker_7eeb6392d3b14949bc97993835dc4f73 = L.marker(
                 [40.0406506,-105.2077798],
                 {
                     icon: new L.Icon.Default()
                     }
                 )
-                .addTo(map_de39f2c6ba8a471fa791a669908f7ad2);
+                .addTo(map_4eb51142afcc4375a2a39286b6d67bba);
+            
+    
 
-
-
-                var icon_cdfff52d7d19499c9a01df281ccdfe76 = L.AwesomeMarkers.icon({
+                var icon_382fa9fe5971438a813e4bbd4845a255 = L.AwesomeMarkers.icon({
                     icon: 'info-sign',
                     iconColor: 'white',
                     markerColor: 'red',
                     prefix: 'glyphicon',
                     extraClasses: 'fa-rotate-0'
                     });
-                marker_99f2e62a5df74ce3a7e55170a41e804e.setIcon(icon_cdfff52d7d19499c9a01df281ccdfe76);
+                marker_7eeb6392d3b14949bc97993835dc4f73.setIcon(icon_382fa9fe5971438a813e4bbd4845a255);
+            
+    
+            var popup_39e583df32214328a7a718f603dbeb72 = L.popup({maxWidth: '300'});
 
+            
+                var html_1aa1858a4c8f44139820724c8b428fad = $('<div id="html_1aa1858a4c8f44139820724c8b428fad" style="width: 100.0%; height: 100.0%;">3</div>')[0];
+                popup_39e583df32214328a7a718f603dbeb72.setContent(html_1aa1858a4c8f44139820724c8b428fad);
+            
 
-            var popup_1a2ecffb0a4e498b86393322f2bacd12 = L.popup({maxWidth: '300'});
+            marker_7eeb6392d3b14949bc97993835dc4f73.bindPopup(popup_39e583df32214328a7a718f603dbeb72);
 
-
-                var html_684323803b964e5bba741ebf45273f3d = $('<div id="html_684323803b964e5bba741ebf45273f3d" style="width: 100.0%; height: 100.0%;">Timberline Lodge</div>')[0];
-                popup_1a2ecffb0a4e498b86393322f2bacd12.setContent(html_684323803b964e5bba741ebf45273f3d);
-
-
-            marker_99f2e62a5df74ce3a7e55170a41e804e.bindPopup(popup_1a2ecffb0a4e498b86393322f2bacd12);
-
-
-
-
-
-            var marker_e660a8461ae44583a0022313876835f3 = L.marker(
-                [40.0159855,-105.2578594],
-                {
-                    icon: new L.Icon.Default()
-                    }
-                )
-                .addTo(map_de39f2c6ba8a471fa791a669908f7ad2);
-
-
-
-                var icon_8677e2e4208d46e38664c891ae9584db = L.AwesomeMarkers.icon({
-                    icon: 'info-sign',
-                    iconColor: 'white',
-                    markerColor: 'red',
-                    prefix: 'glyphicon',
-                    extraClasses: 'fa-rotate-0'
-                    });
-                marker_e660a8461ae44583a0022313876835f3.setIcon(icon_8677e2e4208d46e38664c891ae9584db);
-
-
-            var popup_7f0adf0ae83e44c9972e270403c37172 = L.popup({maxWidth: '300'});
-
-
-                var html_2882acd71dc74867b1a65902c0ea23af = $('<div id="html_2882acd71dc74867b1a65902c0ea23af" style="width: 100.0%; height: 100.0%;">Timberline Lodge</div>')[0];
-                popup_7f0adf0ae83e44c9972e270403c37172.setContent(html_2882acd71dc74867b1a65902c0ea23af);
-
-
-            marker_e660a8461ae44583a0022313876835f3.bindPopup(popup_7f0adf0ae83e44c9972e270403c37172);
-
-
-
-
-            var circle_marker_5c87fec92909462493a902d6bcce89c9 = L.circleMarker(
-                [40.0190225,-105.252321],
+            
+        
+    
+            var circle_marker_e8c3c8d6c6de486fbdce9a648b803691 = L.circleMarker(
+                [40.0149856,-105.2705456],
                 {
   "bubblingMouseEvents": true,
   "color": "#3186cc",
@@ -175,22 +175,22 @@
   "lineCap": "round",
   "lineJoin": "round",
   "opacity": 1.0,
-  "radius": 20,
+  "radius": 10,
   "stroke": true,
   "weight": 3
 }
-                ).addTo(map_de39f2c6ba8a471fa791a669908f7ad2);
+                ).addTo(map_4eb51142afcc4375a2a39286b6d67bba);
+            
+    
+            var popup_98b1029c3faf40cb8acf57c1f5d565c9 = L.popup({maxWidth: '300'});
 
+            
+                var html_aac17ea85cfd42e08d56bf375387d4e4 = $('<div id="html_aac17ea85cfd42e08d56bf375387d4e4" style="width: 100.0%; height: 100.0%;">Actual Location</div>')[0];
+                popup_98b1029c3faf40cb8acf57c1f5d565c9.setContent(html_aac17ea85cfd42e08d56bf375387d4e4);
+            
 
-            var popup_939adff2f62748998c84ed895197f241 = L.popup({maxWidth: '300'});
+            circle_marker_e8c3c8d6c6de486fbdce9a648b803691.bindPopup(popup_98b1029c3faf40cb8acf57c1f5d565c9);
 
-
-                var html_e99abec4d6fb4010aae02d7ce208658a = $('<div id="html_e99abec4d6fb4010aae02d7ce208658a" style="width: 100.0%; height: 100.0%;">Actual Location</div>')[0];
-                popup_939adff2f62748998c84ed895197f241.setContent(html_e99abec4d6fb4010aae02d7ce208658a);
-
-
-            circle_marker_5c87fec92909462493a902d6bcce89c9.bindPopup(popup_939adff2f62748998c84ed895197f241);
-
-
-
+            
+        
 </script>
