@@ -50,13 +50,12 @@
   </body>
   <script>
     function getLoc(){
-      // locText.innerHTML = "Text: {{data[0]}}";
-      predCoord.innerHTML = "Predicted Coordinates: {% for i in data[1] %} <br>{{i}} {% endfor %}";
+
+      predCoord.innerHTML = "Predicted Coordinates: {% for i in data[1] %} <br>({{(i[0])|round(4)}}, {{(i[1])|round(4)}}) {% endfor %}";
       actCoord.innerHTML = "Actual Coordinates:<br> {{data[2]}}";
       theImg.innerHTML = '<img id = "displayImg" src = {{data[3]}}>';
       text.innerHTML = 'Text: {{data[4]}}>';
-      // error.innerHTML = "Error: {{data[3]}}";
-      // accuracy.innerHTML = "Accuracy: {{data[4]}}";
+
       document.getElementById("predCoord").style.visibility = "visible";
       document.getElementById("actCoord").style.visibility = "visible";
       document.getElementById("text").style.visibility = "visible";
