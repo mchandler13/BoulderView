@@ -70,8 +70,9 @@ I split the data into a training set and a testing set. Using tfidfVectorizer I 
 
 ## Accuracy
 The average accuracy for my model was around .648, meaning roughly 65% of the time, my model would be able to accurately predict the location of a picture based on its text. The low accuracy is largely due to the small size of my dataset. As time goes on, and I will be able to collect more Tweets, and the accuracy will increase. I also knew that limiting my score by only considering a prediction to be successfull if the actual coordinates equaled the predicted coordinates. I investigated what happened when I defined a success by the actual coordinates being in the top N predictions, instead of the top prediction:
-<img alt="accuracy_plot" src="data/images/avg_acc_plot.png" width='700' height = '450'>
-<img alt="accuracy_table" src="data/images/Accuracy_table.png" width='700' height = '450'>
+
+<img alt="accuracy_plot" src="data/images/avg_acc_plot.png" width='500' height = '350'>
+<img alt="accuracy_table" src="data/images/Accuracy_table.png" width='300' height = '180'>
 
 Once the model was running, I could pull a random Tweet (picture) and predict it's location based on the associated text.
 Low accuracy, but haven't made any adjustments to it yet, and the dataset is still pretty small. Also, I'm only using the text of the tweet 
