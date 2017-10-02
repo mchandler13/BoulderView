@@ -35,7 +35,7 @@ After each pull, new data would be added into the dataframe, with any repeats be
 * **Coordinates**: the longitude/latitude coordinates of the tweet
 <img alt="AsDict" src="data/images/AsDict.jpg" width='350' height = '225'>
 
-<sub><eb>Figure 1:</b> A Tweet in the form of a dictionary, which allows me to pull metadata with ease</sub>
+<sub><b>Figure 1:</b> A Tweet in the form of a dictionary, which allows me to pull metadata with ease</sub>
 
 ## EDA
 Dropping all rows where coordinates were NaN, and then grouping the dataframe by coordinates, and getting the count of each feature. Then plotting the results over a map of Boulder, with the size of each marker indicating the number of tweets sent from each location. This created a new dataframe called df_coords, containing the counts of the Type column ("Photo or "Not Photo"). 
