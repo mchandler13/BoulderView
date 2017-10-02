@@ -76,6 +76,7 @@ The average accuracy for my model was around .648, meaning roughly 65% of the ti
 
 I made the decision for my model to check the top 3 values and return those coordinates, becuase it resulted in a 10% increase in accuracy. Here is an example:
 <img alt="EDA_1" src="data/images/Three_points.png" width='600' height = '390'>
+<sub> **Interpretation:** we can be 75% sure that the Tweet came from one of these three locations</sub>
 
 Once the model was running, I could pull a random Tweet (picture) and predict it's location based on the associated text.
 Low accuracy, but haven't made any adjustments to it yet, and the dataset is still pretty small. Also, I'm only using the text of the tweet 
