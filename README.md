@@ -80,6 +80,7 @@ I made the decision for my model to check the top 3 values and return those coor
 <img alt="EDA_1" src="data/images/Three_points.png" width='600' height = '390'>
 
 <sub> **Interpretation:** we can be 74.5% sure that the Tweet came from one of these three locations</sub>
+<<<<<<< HEAD
 
 Intuitively, we know that increasing the number of points will increase the accuracy. So why not include 10 points? 30? 100? The answer comes down to practicality. Anyone using this app is trying to figure out the location of a particular Tweet. Yes, increasing the number of point will indeed increase our accuracy (confidence), but it results in larger number of possible points, which is the opposite of what we're trying to do here. It's important to have higher accuracy, but not if it's causing a loss in information. I decided on 3 points, which resulted in higher accuracy, but not at the users expense.
 
@@ -89,6 +90,8 @@ Once the model was running and I was satisfied with the accuracy, I could pull a
 ## Potential Issues
 1. Most of the photos I scraped from Twitter didn't have coordinates, so there is really no way for me to verify that whether my model works for the pictures.
 2. If the actual location of the photo isn't in my training dataset, my model's prediction will be incorrect. However, there have been cases where I could figure out the location of the photo, and my model's prediction ended up being very close to the actual location.
+=======
+>>>>>>> 5eec63c5496c6a4ae248812858d192f403046314
 
 
 # Web Application
