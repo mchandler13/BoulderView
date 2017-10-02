@@ -22,34 +22,45 @@
       <ul class = "inline1">
         <li><a href="/">Home</a></li>
         <li><a href="predict">Predict</a></li>
-        <li><a href="#cool">cool</a></li>
+        <li><a href="plots">Plots</a></li>
         <li><a href="#other">other</a></li>
       </ul>
     </nav>
 
 
-
-    <div id = "firstText" class = "info">
-      <button onclick = "getLoc()" id = "firstButton">Get a Location!</button>
-      <button onclick = "rel()">Go Again</button>
+    <div id = "predictMain" class = "mainDiv">
+      <div id = "firstText" class = "info">
+        <button onclick = "getLoc()" id = "firstButton">Get a Location!</button>
+        <button onclick = "rel()">Go Again</button>
+      </div>
+      <!-- <div id="locText">Text: </div> -->
+      <div id = "predCoord" class = "info">Predicted Coordinates: </div>
+      <div id = "actCoord" class = "info">Actual Coordinates: </div>
+      <!-- <div id = "error" class = "info">Prediction: </div>
+      <div id = "accuracy" class = "info">Accuracy: </div> -->
+      <div id = "text" class = "info">Text: </div>
+      <div id = "theImg" class = "info"></div>
+      <div id = "mapid" class = "info"></div>
 
     </div>
-    <!-- <div id="locText">Text: </div> -->
-    <div id = "predCoord" class = "info">Predicted Coordinates: </div>
-    <div id = "actCoord" class = "info">Actual Coordinates: </div>
-    <div id = "error" class = "info">Prediction: </div>
-    <div id = "accuracy" class = "info">Accuracy: </div>
-    <div id = "mapid" class = "info">Map will go here</div>
   </body>
   <script>
     function getLoc(){
       // locText.innerHTML = "Text: {{data[0]}}";
       predCoord.innerHTML = "Predicted Coordinates: {% for i in data[1] %} <br>{{i}} {% endfor %}";
       actCoord.innerHTML = "Actual Coordinates:<br> {{data[2]}}";
-      error.innerHTML = "Error: {{data[3]}}";
-      accuracy.innerHTML = "Accuracy: {{data[4]}}";
+      theImg.innerHTML = '<img id = "displayImg" src = {{data[3]}}>';
+      text.innerHTML = 'Text: {{data[4]}}>';
+      // error.innerHTML = "Error: {{data[3]}}";
+      // accuracy.innerHTML = "Accuracy: {{data[4]}}";
+      document.getElementById("predCoord").style.visibility = "visible";
+      document.getElementById("actCoord").style.visibility = "visible";
+      document.getElementById("text").style.visibility = "visible";
+      document.getElementById("theImg").style.visibility = "visible";
+      document.getElementById("displayImg").style.visibility = "visible";
       document.getElementById("mapid").style.visibility = "visible";
-      document.getElementById("displayTable").style.visibility = "visible";
+
+
     }
     function rel(){
       window.location.reload();
@@ -67,10 +78,15 @@
   		id: 'mapbox.streets'
   	}).addTo(mymap);
     var marker = L.marker([{{data[2][1]}},{{data[2][0]}}]).addTo(mymap);
+    var polygon = L.polygon([
+    [{{data[1][0][1]}},{{data[1][0][0]}}],
+    [{{data[1][1][1]}},{{data[1][1][0]}}],
+    [{{data[1][2][1]}},{{data[1][2][0]}}]
+]).addTo(mymap);
   </script>
   {% for i in data[1] %}
     <script>
-      var marker = L.circle([{{i[1]}},{{i[0]}}],{color:'#FF0000',radius:50}).addTo(mymap);
+      var marker = L.circle([{{i[1]}},{{i[0]}}],{color:'#000000',radius:50,popup:'The Waterfront'}).addTo(mymap);
     </script>
   {% endfor %}
 </html>

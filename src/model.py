@@ -10,13 +10,17 @@ from nltk import pos_tag
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel, cosine_similarity
 from sklearn.naive_bayes import MultinomialNB
-from sklearn.cross_validation import train_test_split
+from sklearn.model_selection import train_test_split
 import pandas as pd
 
 class TextModel(object):
-    def __init__(self, filename):
+    def __init__(self, filename,n):
         # self.filename = filename
-        self.df = self._initialize(filename)
+        self.df, self.df_pics = self._initialize(filename)
+        self.get_X_y()
+        self.split()
+        self.vectorize()
+        self.predict(n)
 
     def _initialize(self,filename):
         df = pd.read_csv(filename)
@@ -24,33 +28,41 @@ class TextModel(object):
         df['Hashtags'] = df.Hashtags.apply(lambda x: x[1:-1].replace("'","").split(", "))
         df['Hashtags'] = df.Hashtags.apply(lambda x: [] if '#' not in x[0] else x)
         df['Coordinates'] = df[['Longitude', 'Latitude']].apply(lambda x: tuple(x), axis=1)
-        df = df[df.Longitude.notnull()]
-        df = df[(df['Longitude']>=-105.380894)&(df['Longitude']<=-105.107185)&(df['Latitude']>=39.978093)&(df['Latitude']<=40.095651)]
-        df = df[['Coordinates','Text']].reset_index(drop = True)
-        return df
+        df_coords = df[df.Longitude.notnull()]
+        df_coords = df_coords[(df_coords['Longitude']>=-105.380894)&(df_coords['Longitude']<=-105.107185)&(df_coords['Latitude']>=39.978093)&(df_coords['Latitude']<=40.095651)]
+        df_coords = df_coords[['Coordinates','Text']].reset_index(drop = True)
+
+
+        df_pics = df[df['Type']=='photo'].reset_index()
+        df_pics = df_pics[["Text","Pic_Link","Coordinates"]]
+        return df_coords,df_pics
 
     def get_X_y(self):
         X = list(self.df.Text)
-        hashtags = ['#BoulderAthletes','#boulderlife','#BeBoulder','#boulderco','#boulder','#bouldercolorado','#Boulder','Boulder']
+        hashtags = [' #BoulderAthletes',' #boulderlife',' #BeBoulder',' #boulderco',' #boulder',' #bouldercolorado',' #Boulder',' Boulder']
         for word in hashtags:
-            X = [x.replace(word,'') for x in X]
+            X = [x.lower().replace(word.lower(),'') for x in X]
         y = list(self.df.Coordinates)
         self.X, self.y =  X,y
+        self.text = (self.df_pics.Text)
+        self.link = (self.df_pics.Pic_Link)
+        self.coords = (self.df_pics.Coordinates)
 
     def split(self):
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.2, random_state = 13)
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.1, random_state = 13)
 
 
     def vectorize(self):
         vectorizer = TfidfVectorizer(stop_words='english')
         vectors = vectorizer.fit_transform(self.X_train).toarray()
 
-        tokenized_queries = vectorizer.transform(self.X_test)
+
+        tokenized_queries = vectorizer.transform(self.text) # <------ X_test
         self.cosine_similarities = cosine_similarity(tokenized_queries, vectors)
         self.titles = self.y_train
 
     def predict(self,n):
-        self.hold =  [[self.titles[k] for k in np.argsort(self.cosine_similarities[i])[:1:-1]] for i in range(len(self.X_test))]
+        self.hold =  [[self.titles[k] for k in np.argsort(self.cosine_similarities[i])[:1:-1]] for i in range(len(self.text))] # <-- X_test
         self.y_pred = []
         for i in self.hold:
             temp = []
@@ -62,7 +74,7 @@ class TextModel(object):
 
     def variables(self):
         self.truth = [self.y_test[i] in self.y_pred[i] for i in range(len(self.y_test))]
-        return self.X_train, self.X_test, self.y_train, self.y_test, self.y_pred, self.truth
+        return self.X_train, self.X_test, self.y_train, self.y_test, self.y_pred, self.truth, self.text,self.link,self.coords
 
     def acc(self):
         self.accuracy = sum(self.truth)/len(self.truth)
@@ -70,19 +82,17 @@ class TextModel(object):
 
 
 if __name__ == '__main__':
-    tm = TextModel('../data/tweets.txt')
+    t = TextModel('../data/tweets.txt',3)
     accuracies = []
     ind = list(range(1,11))
     for i in ind:
-        tm.get_X_y()
-        tm.split()
-        tm.vectorize()
+        tm = TextModel('../data/tweets.txt',i)
         tm.predict(i)
-        X_train, X_test, y_train, y_test, y_pred, truth = tm.variables()
+        X_train, X_test, y_train, y_test, y_pred, truth, text, link, coords = tm.variables()
         accuracies.append(tm.acc())
-        # print("Accuracy with {} point(s): {}".format(i,tm.acc()))
+        print("Accuracy with {} point(s): {}".format(i,tm.acc()))
 
-    plt.scatter(ind,accuracies)
-    plt.xlabel("x")
-    plt.ylabel("y")
-    plt.show()
+    # plt.scatter(ind,accuracies)
+    # plt.xlabel("x")
+    # plt.ylabel("y")
+    # plt.show()

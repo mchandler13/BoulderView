@@ -19,7 +19,9 @@ def load(filename):
 
 def pictures_df(dataframe):
     df = dataframe
-    df = df[df['Type']=='photo']
+    df = df[df['Type']=='photo'].reset_index()
+    df.drop(['level_0','index'],axis = 1,inplace = True)
+    df = df[["Text","Pic_Link","Coordinates"]]
     return df
 
 def hashtag_df(dataframe):
@@ -79,33 +81,6 @@ def plot_first(dataframe):
     plt.ylabel("Latitude",fontsize = 10)
     plt.imshow(img,extent = [-105.380894,-105.107185,39.978093,40.095651])
     plt.show()
-def plotly_plot(dataframe):
-    df_coords = dataframe
-    trace0 = Scatter(
-        x=list(df_coords['Longitude']),
-        y=list(df_coords['Latitude']),
-        # x = [1,2,3,4,5],
-        # y = [3,2,1,4,5],
-        mode = 'markers'
-    )
-    layout = Layout(
-        images = [dict(source = "https://raw.githubusercontent.com/mchandler13/BoulderView/master/Boulder.png",
-                  xref= "x",
-                  yref= "y",
-                  x= -105.4,
-                  y= 40.08,
-                  sizex= .3,
-                  sizey= .1,
-                  sizing= "stretch",
-                  opacity= 0.7,
-                  layer= "below")],
-        xaxis=dict(range = [-105.4,-105.1]),
-        yaxis=dict(range = [39.98,40.08])
-    )
-
-    data = Data([trace0])
-    fig = Figure(data=data, layout = layout)
-    plot_url = py.plot(fig, filename='first_geo')
 
 
 
@@ -117,21 +92,8 @@ if __name__ == '__main__':
     # plot_first(df_coords)
     # plotly_plot(df_coords)
     # df_hashtags = hashtag_df(df)
-    # df_pics = pictures_df(df)
+    df_pics = pictures_df(df)
     df_text = text_df(df)
-    #
-    #
-    # df_coords['text'] =df_coords['Count'].astype(str)
-
-    # import folium
-    # # location=[40.036872, -105.2440395]
-    # map_osm = folium.Map(location=[40, -105.25],tiles = 'Stamen Terrain',zoom_start = 13)
-    # lat = df_coords.Latitude
-    # lon = df_coords.Longitude
-    # c = df_coords.Count
-    # for i in range(len(lon)):
-    #     folium.Marker([lat[i],lon[i]],icon=folium.Icon(color='#FF0000'),popup=str(c[i])).add_to(map_osm)
-    # map_osm.save('/Users/Marty/Desktop/map.html')
 
 
 

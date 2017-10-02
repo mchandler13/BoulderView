@@ -15,48 +15,99 @@
       <ul class = "inline1">
         <li><a href="/">Home</a></li>
         <li><a href="predict">Predict</a></li>
-        <li><a href="#cool">cool</a></li>
+        <li><a href="plots">Plots</a></li>
         <li><a href="#other">other</a></li>
       </ul>
     </nav>
-    <div id="thePlot"></div>
-    <div id="hoverinfo"></div>
-    <script>
-    var myPlot = document.getElementById('thePlot'),
-        hoverInfo = document.getElementById('hoverinfo'),
-        d3 = Plotly.d3,
-        x = {{data[0]}},
-        y1 = {{data[1]}},
-        hashtag_count = {{data[2]}},
-        data = [ { x:x, y:y1, type:'scatter', name:'Boulder Tweets!!',
-            mode:'markers', marker:{size:4}, text:hashtag_count}];
-        layout = {
-            hovermode:'closest',
-            title:'Boulder Tweets',
-            images: [{source: "https://raw.githubusercontent.com/mchandler13/BoulderView/master/data/images/Boulder.jpg",
-                      xref: "x",
-                      yref: "y",
-                      x: -105.4,
-                      y: 40.08,
-                      sizex: .3,
-                      sizey: .1,
-                      sizing: "stretch",
-                      opacity: 0.7,
-                      layer: "below"}]
-         }
-         config={
-           'displayModeBar': false
-         };
-
-
-    Plotly.plot('thePlot', data, layout,config);
-
-    myPlot.on('plotly_hover', function(data){
-        var infotext = data.points.map(function(d){
-          return ('Number of Hashtags: '+d.text);
-        });
-        hoverInfo.innerHTML = infotext.join('');
-      });
-    </script>
+  <div class = "mainDiv">
+    <h1>Welcome To BoulderView</h1>
+    <div>
+      <h2>Purpose:</h2>
+      <p>In conjunction with the City of Boulder, I wanted to be able to identify the popular photo spots.</p>
+    </div>
+    <div>
+      <h2>Data:</h2>
+      <p>All data was collected from Twitter using its API. I'm able to pull data from  </p>
+    </div>
+    <p><a href = "https://github.com/mchandler13/BoulderView">Here</a> is a link to the github repo</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+    <p>Here is some text</p>
+  </div>
   </body>
 </html>

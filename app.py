@@ -14,45 +14,19 @@ from sklearn.metrics.pairwise import linear_kernel
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.cross_validation import train_test_split
 import pandas as pd
-
+import folium
 
 df = load('data/tweets.txt')
 df_coords = coordinates_df(df)
+
 N = 3
-tm = TextModel('data/tweets.txt')
-tm.get_X_y()
-tm.split()
-tm.vectorize()
-tm.predict(N)
-X_train, X_test, y_train, y_test, y_pred, truth = tm.variables()
-accuracy = tm.acc()
+tm = TextModel('data/tweets.txt',N)
+X_train, X_test, y_train, y_test, y_pred, truth, text, link, coords = tm.variables()
+# accuracy = tm.acc()
 
-
-# df = load('data/tweets.txt')
-# df_coords = coordinates_df(df)
-# tm = TextModel('data/tweets.txt')
-#
-#
-# acc = []
-# ind = list(range(1,31))
-# for i in ind:
-#     tm.get_X_y()
-#     tm.split()
-#     tm.vectorize()
-#     tm.predict(i)
-#     X_train, X_test, y_train, y_test, y_pred, truth = tm.variables()
-#     acc.append(tm.accuracy())
 
 """ BAD"""
-import folium
-# # location=[40.036872, -105.2440395]
-# map_osm = folium.Map(location=[40, -105.25],tiles = 'Stamen Terrain',zoom_start = 13)
-# lat = df_coords.Latitude
-# lon = df_coords.Longitude
-# c = df_coords.Count
-# for i in range(len(lon)):
-#     folium.Marker([lat[i],lon[i]],icon=folium.Icon(color='#FF0000'),popup=str(c[i])).add_to(map_osm)
-# map_osm.save('/Users/Marty/Desktop/map.html')
+
 
 
 
@@ -61,48 +35,34 @@ import folium
 """ -------------------"""
 
 
+app = Flask(__name__)
 
-
-# initialize the Flask app, note that all routing blocks use @app
-app = Flask(__name__)  # instantiate a flask app object
-
-# routing blocks - note there is only one in this case - @app.route('/')
-
-# home page - the first place your app will go
-@app.route('/', methods = ['GET', 'POST'])  # GET is the default, more about GET and POST below
-# the function below will be executed at the host and port followed by '/'
-# the name of the function that will be executed at '/'. Its name is arbitrary.
+""" Home Page """
+@app.route('/',methods = ['GET','POST'])
 def index():
-    d = [list(df_coords["Longitude"]),list(df_coords["Latitude"]),list(df_coords["Num_Hashtags"])]
-    return render_template('home.html',data = d)
+    # d = [list(df_coords["Longitude"]),list(df_coords["Latitude"]),list(df_coords["Num_Hashtags"])]
+    return render_template('home.html')
 
+
+
+""" Predict Page """
 @app.route('/predict',methods = ['GET','POST'])
 def predict():
-
-    i = np.random.randint(len(tm.y_pred))
-
-    map_osm = folium.Map(location=[40, -105.25],tiles = 'Stamen Terrain',zoom_start = 13)
-    lon, lat = zip(*y_pred[i])
-    r = list(range(1,len(lon)+1))
-    for k in range(len(lon)):
-        folium.Marker([lat[k],lon[k]],icon=folium.Icon(color='red'),popup=str(r[k])).add_to(map_osm)
-    # folium.Marker(,icon=folium.Icon(color='blue'),popup='Actual Location').add_to(map_osm)
-    folium.CircleMarker([y_test[i][1],y_test[i][0]],
-                    radius=10,
-                    popup='Actual Location',
-                    color='#3186cc',
-                    fill_color='#3186cc'
-                   ).add_to(map_osm)
-    map_osm.save('templates/map.html')
+    i = np.random.randint(len(text))
     # e = ((y_pred[i][0]-y_test[i][0])**2 +(y_pred[i][0]-y_test[i][0])**2)**.5
-    return render_template("predict.html",data = [X_test[i],y_pred[i],y_test[i],truth[i],accuracy])
-# no more routing blocks
+    # data = [X_test[i],y_pred[i],y_test[i],truth[i],accuracy]
+    data = [text[i],y_pred[i],coords[i],link[i],text[i]]
 
-@app.route('/map', methods = ['GET', 'POST'])  # GET is the default, more about GET and POST below
-# the function below will be executed at the host and port followed by '/'
-# the name of the function that will be executed at '/'. Its name is arbitrary.
-def map():
-    return render_template('map.html')
+    return render_template("predict.html",data = data)
+
+
+
+
+""" Plot page """
+@app.route('/plots', methods = ['GET', 'POST'])
+def plots():
+    d = [list(df_coords["Longitude"]),list(df_coords["Latitude"]),list(df_coords["Num_Hashtags"])]
+    return render_template('plots.html',data = d)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)

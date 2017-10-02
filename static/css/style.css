@@ -1,54 +1,35 @@
 /* CSS FOR THE NAVIGATION BAR */
 
-nav {
-  background-size: 100% 100%;
-  height: 64px;
-  margin-left:-70px;
-  left: 0;
-  min-width: 1200px;
-  padding-left: 5%;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  position: fixed;
-  z-index:1;
-  top: 0px;
-  text-align:center;
-  overflow: hidden;
-  background-color: #334455;
+nav{
+  position:fixed;
+  width:100%;
+  z-index: 5;
 }
 
 nav > ul {
-  display: inline;
-  list-style: none outside none;
-  min-width: 900px;
-  padding: 0 20px;
-  position: relative;
-  top: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000000;
+    font-size:20px;
 }
 
 nav > ul > li {
-  color: #FFFF00;
-  display: inline;
-  margin-left: 25px;
-  padding: 4px;
+    float: left;
 }
 
 nav > ul > li > a {
-  background-color: #000000;
-  border-radius: 22px;
-  color: #FFFF00;
-  padding: 11px 18px;
-  text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
 nav > ul > li > a:hover{
-  background-color: #777777;
-  color: #FFFF00;
-}
-
-nav > ul > li > a:visited{
-  color: #FFFF00;
+  background-color: #DDDDDD;
+  color: #000000;
 }
 
 /*****************************************/
@@ -60,7 +41,49 @@ body {
   width: 100%;
   overflow: auto;
   background-color: #FFFFFF;
-  margin-left: 0px;
+  margin: 0px;
+  background-image: url("https://raw.githubusercontent.com/mchandler13/BoulderView/master/data/images/flatirons.jpg");
+  background-size:100% 110%;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.mainDiv{
+  position:relative;
+  left:20%;
+  width:60%;
+  background-color:#000000;
+  opacity:.8;
+  color:#ffffff;
+  top:10%;
+  padding-top: 15px;
+}
+
+.mainDiv > h1{
+  font-size:40px;
+  text-align: center;
+  padding:10px;
+
+}
+
+.mainDiv > p{
+  margin-bottom: 20px;
+}
+
+.mainDiv > div {
+    background-color: #111111;
+    left: 3%;
+    margin: 20px 0;
+    opacity: 1;
+    padding: 3px 2%;
+    position: inherit;
+    width: 90%;
+}
+
+.mainDiv > div > p{
+  left:2%;
+  position:inherit;
+  width:96%;
 }
 
 
@@ -95,12 +118,6 @@ html {
   z-index: 3;
 }
 
-
-#predictBody{
-  background-image: url("https://raw.githubusercontent.com/mchandler13/BoulderView/master/data/images/flatirons.jpg");
-  background-size:100% 100%;
-}
-
 .info {
     background-color: #000000;
     color: #ffffff;
@@ -108,7 +125,7 @@ html {
     opacity: 0.8;
     padding: 14px 3px;
     position: relative;
-    top: 10%;
+    top: 7%;
     width: 40%;
     /*height: 20%;*/
 }
@@ -137,10 +154,32 @@ td, th {
 }*/
 
 #mapid {
-    height: 90%;
-    left: 40%;
-    position: absolute;
-    top: 10%;
-    width: 60%;
-    visibility: hidden;
+  position: inherit;
+  opacity: 1;
+  height: 500px;
+  visibility: hidden;
+}
+
+#displayImg{
+  position: inherit;
+  opacity: 1;
+  width: 100%;
+  height: 400px;
+  visibility: hidden;
+}
+
+#theImg{
+  visibility: hidden;
+}
+
+#text{
+  visibility: hidden;
+}
+
+#predCoord{
+  visibility: hidden;
+}
+
+#actCoord{
+  visibility: hidden;
 }
