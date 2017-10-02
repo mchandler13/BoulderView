@@ -19,11 +19,11 @@ Originally, I was going to be using a database from the City Of Boulder, but non
 Most people would say that a Tweet is simply anything posted on Twitter (usually text or a picture). In reality, a Tweet contains a great deal of information, ranging from geographic information to the time of the tweet. This type data provides information about other data. We call this **metadata**, and it can be extremely useful.
 
 ### Gathering Data
-Pulling Data every hour, and loading it into a .txt file, gaining roughly 1000 lines at each pull. Much of this data would be missing information, such as latitude/longitude. Also, many of the rows would be repeats, so I will need to drop them upon reading them into my database.
+I made a data pull every hour, and loaded it into a .txt file, gaining roughly 1000 lines at each pull. Much of this data would be missing information, such as latitude/longitude. Also, many of the rows would be repeats, so I will need to drop them upon reading them into my database. Due to the limited amount of time, my dataset will be relatively small.
 
 
 ### Building The Dataset
-After each pull, new data would be added into the dataframe, with any repeats being omitted. The features I'm using are as follows:
+After each pull, new data would be added into the dataframe, with any repeats being omitted. The features I'll be using are as follows:
 * **ID**: The Tweet ID
 * **Type**: Picture, Video, Animated Gif, Other
 * **Pic_link**: the link to the picture, if applicable
@@ -33,9 +33,8 @@ After each pull, new data would be added into the dataframe, with any repeats be
 * **Hashtags**: The hashtags associated with the tweet
 * **Created_At**: The date/time when the tweet was posted
 * **Coordinates**: the longitude/latitude coordinates of the tweet
-<img alt="AsDict" src="data/images/AsDict.jpg" width='350' height = '225'>
-
-<sub><b>Figure 1:</b> A Tweet in the form of a dictionary, which allows me to pull metadata with ease</sub>
+<img alt="AsDict" src="data/images/AsDict.jpg" width='500' height = '400'>
+<sub>**Figure 1:** A single Tweet in the form of a dictionary, which allows me to gather metadata with ease</sub>
 
 ## EDA
 Dropping all rows where coordinates were NaN, and then grouping the dataframe by coordinates, and getting the count of each feature. Then plotting the results over a map of Boulder, with the size of each marker indicating the number of tweets sent from each location. This created a new dataframe called df_coords, containing the counts of the Type column ("Photo or "Not Photo"). 
@@ -49,7 +48,7 @@ Moving forward, I knew I'd be using interactive plots, so I looked into a few:
 * [Plotly](https://plot.ly/) Creates dashboards for web applicastions
 * [Folium](https://folium.readthedocs.io/en/latest/) Useful for mapping data
 
-Decided to use Plotly, due to it's ease of use, and ability to interact with webapps. [Here](https://plot.ly/~martychandler13/8.embed) is an early example using Plotly. It's simple to use, and has built-in hover properties. MIGHT SWITCH TO FOLIUM IF TIME
+Initially, I decided to use Plotly, due to it's ease of use, and ability to interact with webapps. [Here](https://plot.ly/~martychandler13/8.embed) is an early example using Plotly. It's simple to use, and has built-in hover properties. Later, I switched to Folium, because it allows for interactive maps.
 
 
 # NLP
@@ -58,7 +57,11 @@ NLP stands for Natural Language Processing. It is a field of Computer Science th
 # The Model
 
 ## First Model
-Using tfidfVectorizer I created a Matrix of cosine similarities. Low accuracy, but haven't made any adjustments to it yet, and the dataset is still pretty small. Also, I'm only using the text of the tweet (I haven't done anything with Hashtags yet)
+I split the data into a training set and a testing set. Initially, I will only be using 
+Using tfidfVectorizer I created a Matrix of cosine similarities. 
+
+Once the model was running, I could pull a random Tweet and predict it's location b
+Low accuracy, but haven't made any adjustments to it yet, and the dataset is still pretty small. Also, I'm only using the text of the tweet 
 
 
 # Web Application
