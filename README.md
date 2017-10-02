@@ -23,7 +23,7 @@ Pulling Data every hour, and loading it into a .txt file, gaining roughly 1000 l
 
 
 ### Building The Dataset
-After each pull, new data would be added into the dataframe, with any repeats being omitted. The fetures I'm using are as follows:
+After each pull, new data would be added into the dataframe, with any repeats being omitted. The features I'm using are as follows:
 * **ID**: The Tweet ID
 * **Type**: Picture, Video, Animated Gif, Other
 * **Pic_link**: the link to the picture, if applicable
@@ -33,7 +33,9 @@ After each pull, new data would be added into the dataframe, with any repeats be
 * **Hashtags**: The hashtags associated with the tweet
 * **Created_At**: The date/time when the tweet was posted
 * **Coordinates**: the longitude/latitude coordinates of the tweet
-<img alt="AsDict" src="data/images/AsDict.jpg" width='700' height = '450'>
+<img alt="AsDict" src="data/images/AsDict.jpg" width='350' height = '225'>
+
+<sub><eb>Figure 1:</b> A Tweet in the form of a dictionary, which allows me to pull metadata with ease</sub>
 
 ## EDA
 Dropping all rows where coordinates were NaN, and then grouping the dataframe by coordinates, and getting the count of each feature. Then plotting the results over a map of Boulder, with the size of each marker indicating the number of tweets sent from each location. This created a new dataframe called df_coords, containing the counts of the Type column ("Photo or "Not Photo"). 
