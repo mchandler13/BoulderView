@@ -49,8 +49,6 @@ def index():
 @app.route('/predict',methods = ['GET','POST'])
 def predict():
     i = np.random.randint(len(text))
-    # e = ((y_pred[i][0]-y_test[i][0])**2 +(y_pred[i][0]-y_test[i][0])**2)**.5
-    # data = [X_test[i],y_pred[i],y_test[i],truth[i],accuracy]
     data = [text[i],y_pred[i],coords[i],link[i],text[i]]
 
     return render_template("predict.html",data = data)
@@ -63,6 +61,12 @@ def predict():
 def plots():
     d = [list(df_coords["Longitude"]),list(df_coords["Latitude"]),list(df_coords["Num_Hashtags"])]
     return render_template('plots.html',data = d)
+
+""" Plot page """
+@app.route('/future_steps', methods = ['GET', 'POST'])
+def future_Steps():
+    d = [list(df_coords["Longitude"]),list(df_coords["Latitude"]),list(df_coords["Num_Hashtags"])]
+    return render_template('future_steps.html',data = d)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)

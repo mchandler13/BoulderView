@@ -86,7 +86,7 @@ def plot_first(dataframe):
 
 
 if __name__ == '__main__':
-    df = load('../data/tweets.txt')
+    df = load('/Users/Marty/galvanize/BoulderView/data/tweets.txt')
     df_coords = coordinates_df(df)
     # dfc = df_coords[df_coords['Count']>=2].reset_index()
     # plot_first(df_coords)
@@ -94,6 +94,9 @@ if __name__ == '__main__':
     # df_hashtags = hashtag_df(df)
     df_pics = pictures_df(df)
     df_text = text_df(df)
+
+    df.head()
+
 
 
 

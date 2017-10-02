@@ -23,15 +23,19 @@
         <li><a href="/">Home</a></li>
         <li><a href="predict">Predict</a></li>
         <li><a href="plots">Plots</a></li>
-        <li><a href="#other">other</a></li>
+        <li><a href="future_steps">Future Steps</a></li>
       </ul>
     </nav>
 
 
     <div id = "predictMain" class = "mainDiv">
+      <h1>Welcome To BoulderView</h1>
       <div id = "firstText" class = "info">
-        <button onclick = "getLoc()" id = "firstButton">Get a Location!</button>
-        <button onclick = "rel()">Go Again</button>
+        <p> On this page, you can pull a random image from Twitter, and get a prediction.
+          The text from the tweet will be displayed, along with the image and a map with the probable locations of the tweet.
+        If the buttons aren't working, reload the page.</p>
+        <button onclick = "getLoc()" class = "buttons">Get a Tweet!</button>
+        <button onclick = "rel()" class = "buttons">Go Again</button>
       </div>
       <!-- <div id="locText">Text: </div> -->
       <div id = "predCoord" class = "info">Predicted Coordinates: </div>

@@ -83,16 +83,26 @@ class TextModel(object):
 
 if __name__ == '__main__':
     t = TextModel('../data/tweets.txt',3)
-    accuracies = []
-    ind = list(range(1,11))
-    for i in ind:
-        tm = TextModel('../data/tweets.txt',i)
-        tm.predict(i)
-        X_train, X_test, y_train, y_test, y_pred, truth, text, link, coords = tm.variables()
-        accuracies.append(tm.acc())
-        print("Accuracy with {} point(s): {}".format(i,tm.acc()))
 
-    # plt.scatter(ind,accuracies)
-    # plt.xlabel("x")
-    # plt.ylabel("y")
+    # plot_accs = []
+    # ind = list(range(1,6))
+    # for r in range(1,31):
+    #     print("------------------------------")
+    #     print("TT_Split #{}:".format(r))
+    #     accuracies = []
+    #     for i in ind:
+    #         tm = TextModel('../data/tweets.txt',i,r)
+    #         tm.predict(i)
+    #         X_train, X_test, y_train, y_test, y_pred, truth, text, link, coords = tm.variables()
+    #         accuracies.append(tm.acc())
+    #         # print("Accuracy with {} point(s): {}".format(i,tm.acc()))
+    #     plot_accs.append(accuracies)
+    #
+    # avg_acc = [np.mean(i) for i in np.transpose(plot_accs)]
+    # # for i in range(30):
+    # #     plt.plot(ind,plot_accs[i],c='b')
+    # plt.plot(ind,avg_acc,c = 'r')
+    # plt.xlabel("Number of points")
+    # plt.ylabel("Accuracy")
+    # plt.title("Accuracy of model")
     # plt.show()
