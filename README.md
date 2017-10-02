@@ -90,8 +90,6 @@ Once the model was running and I was satisfied with the accuracy, I could pull a
 ## Potential Issues
 1. Most of the photos I scraped from Twitter didn't have coordinates, so there is really no way for me to verify that whether my model works for the pictures.
 2. If the actual location of the photo isn't in my training dataset, my model's prediction will be incorrect. However, there have been cases where I could figure out the location of the photo, and my model's prediction ended up being very close to the actual location.
-=======
->>>>>>> 5eec63c5496c6a4ae248812858d192f403046314
 
 
 # Web Application
