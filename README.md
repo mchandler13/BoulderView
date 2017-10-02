@@ -10,11 +10,13 @@ In coordination with the City Of Boulder, I will be using Twitter to predict whe
 2. [NLP](#nlp)
 3. [The Model](#the-model)
    * [First Model](#first-model)
+   * [Accuracy](#accuracy)
 4. [Web Application](#web-application)
 
 
 ## Data
 Originally, I was going to be using a database from the City Of Boulder, but none of the files contained Geocode information. I investigated the APIs of Facebook, Twitter, and Instagram. Facebook wasn't allowing access at the time, and I still haven't heard back from Instagram, but Twitter has been extremely helpful. The API is very easy to use, and provides a wealth of information.
+
 ### Tweets
 Most people would say that a Tweet is simply anything posted on Twitter (usually text or a picture). In reality, a Tweet contains a great deal of information, ranging from geographic information to the time of the tweet. This type data provides information about other data. We call this **metadata**, and it can be extremely useful.
 
@@ -57,12 +59,22 @@ NLP stands for Natural Language Processing. It is a field of Computer Science th
 # The Model
 
 ## First Model
-I split the data into a training set and a testing set. Initially, I will only be using 
-Using tfidfVectorizer I created a Matrix of cosine similarities. 
+I split the data into a training set and a testing set. Using tfidfVectorizer I created a Matrix of [cosine similarities](https://en.wikipedia.org/wiki/Cosine_similarity). The process of testing the model is as follows:
 
-Once the model was running, I could pull a random Tweet and predict it's location b
+1) Pull a Tweet from the testing dataset
+2) Compute the cosine similarity between the text of that tweet, and the text of all the tweets from the the training dataset.
+3) Return the coordinates of the tweet (from the training dataset) that has the highest cosine similarity with the test tweet.
+4) Compare the predicted coordinates to the actual coordinates.
+5) Repeat 1-4 until a prediction has been made for each Tweet from the testing dataset.
+6) Compute the accuracy by dividing the number of correct predictions by the total number of predictions made.
+
+## Accuracy
+The average accuracy for my model was around .648, meaning roughly 65% of the time, my model would be able to accurately predict the location of a picture based on its text. The low accuracy is largely due to the small size of my dataset. As time goes on, and I will be able to collect more Tweets, and the accuracy will increase. I also knew that limiting my score by only considering a prediction to be successfull if the actual coordinates equaled the predicted coordinates. I investigated what happened when I defined a success by the actual coordinates being in the top N predictions, instead of the top prediction:
+<img alt="accuracy_plot" src="data/images/Accuracy_Plot.png" width='700' height = '450'>
+<img alt="accuracy_table" src="data/images/Accuracy_table.png" width='700' height = '450'>
+
+Once the model was running, I could pull a random Tweet (picture) and predict it's location based on the associated text.
 Low accuracy, but haven't made any adjustments to it yet, and the dataset is still pretty small. Also, I'm only using the text of the tweet 
-
 
 # Web Application
 
