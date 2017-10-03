@@ -20,7 +20,7 @@ Originally, I was going to be using a database from the City Of Boulder, but non
 Most people would say that a Tweet is simply anything posted on Twitter (usually text or a picture). In reality, a Tweet contains a great deal of information, ranging from geographic information to the time of the tweet. We call this **metadata**, and it can be extremely useful.
 
 ### Gathering Data
-I made a data pull every hour, and loaded it into a .txt file, gaining roughly 1000 lines at each pull. I specified my pull to tweets containing information relevant to Boulder, like #Boulder or #FolsonField. Much of this data would be missing information, such as latitude/longitude. Also, many of the rows would be repeats, so I will need to drop them upon reading them into my database. Due to the fact that Twitter only allows me to scrape Tweets up to 1 week ago, my dataset will be relatively small.
+I made a data pull every hour, and loaded it into a .txt file, gaining roughly 1000 lines at each pull. I specified my pull to tweets containing information relevant to Boulder, like #Boulder or #FolsomField. Much of this data would be missing information, such as latitude/longitude. Also, many of the rows would be repeats, so I will need to drop them upon reading them into my database. Due to the fact that Twitter only allows me to scrape Tweets up to 1 week ago, my dataset will be relatively small.
 
 
 ### Building The Dataset
@@ -50,12 +50,12 @@ I dropped all rows where coordinates were NaN, and then grouped the dataframe by
 
 Moving forward, I knew I'd be using interactive plots, so I looked into a few:
 * [Bokeh](https://bokeh.pydata.org/en/latest/) Useful for Visualization of large datasets
-* [Plotly](https://plot.ly/) Creates dashboards for web applicastions
+* [Plotly](https://plot.ly/) Creates dashboards for web applications
 * [Folium](https://folium.readthedocs.io/en/latest/) Useful for mapping data
 
 Initially, I decided to use Plotly, due to it's ease of use, and ability to interact with webapps. [Here](https://plot.ly/~martychandler13/8.embed) is an early example using Plotly. It's simple to use, and has built-in hover properties. Later however, I switched to Folium, because it allows for interactive maps.
 
-- - - - 
+- - - -
 
 # NLP
 Before I dive into the model, you should really be familiar with NLP, which stands for Natural Language Processing. It is a field of Computer Science that allows computers to make sense of everyday (human) language ([example](http://www.expertsystem.com/examples-natural-language-processing/)). I will be using NLP, because every Tweet has text associated with it, and I will be able to make predictions regarding a new Tweet based on the text of existing Tweets. The **Text** will act as the link between photos and coordinates.
@@ -77,7 +77,16 @@ I split the data into a training set and a testing set. Using [tfidfVectorizer](
 The average accuracy for my model was around .648, meaning roughly 65% of the time, my model would be able to accurately predict the location of a tweet based on its text. The low accuracy is largely due to the small size of my dataset. As time goes on, and I will be able to collect more Tweets, and the accuracy will increase. I also knew that limiting my score by only considering a prediction to be successful if the actual coordinates equaled the predicted coordinates. I investigated what happened when I defined a success by the actual coordinates being in the top N predictions, instead of just the top prediction:
 
 <img alt="accuracy_plot" src="data/images/avg_acc_plot.png" width='350' height = '230'>
-<img alt="accuracy_table" src="data/images/Accuracy_table.png" width='350' height = '230'>
+
+
+Points | Accuracy
+------ | --------
+1      | .648
+2      | .712
+3      | .745
+4      | .763
+5      | .775
+
 
 I made the decision for my model to check the top 3 values and return those coordinates, because it resulted in a 10% increase in accuracy, and the three points are usually pretty close to each other. Here is an example:
 

@@ -8,6 +8,7 @@ from collections import Counter
 import plotly.plotly as py
 import plotly
 from plotly.graph_objs import *
+import folium
 
 
 def load(filename):
@@ -74,13 +75,21 @@ def plot_first(dataframe):
     size = [10*i for i in list(df_coords['Count'])]
     alpha = [i/26 for i in list(df_coords['Count'])]
     current_palette = sns.color_palette("Set2", 10)
-    sns.lmplot(x = 'Longitude',y = 'Latitude',data = df_coords, hue = 'photo',fit_reg = False,scatter_kws = {'alpha':.6,'s':size})
+    sns.lmplot(x = 'Longitude',y = 'Latitude',data = df_coords, hue = 'photo',fit_reg = False,scatter_kws = {'alpha':.6})
     plt.scatter([m_lon],[m_lat],s=40,c = '#FF2266')
     plt.title("Map of Boulder: {} points, {} Tweets".format(df_coords.shape[0],df_coords['Count'].sum()),fontsize = 20)
     plt.xlabel("Longitude",fontsize = 10)
     plt.ylabel("Latitude",fontsize = 10)
     plt.imshow(img,extent = [-105.380894,-105.107185,39.978093,40.095651])
     plt.show()
+
+def plot_folium(dataframe):
+    df = dataframe
+    boulder1 = folium.Map(location = [40, -105.25], zoom_start = 13)
+    for coord in df.Coordinates:
+        folium.Marker([coord[1],coord[0]]).add_to(boulder1)
+    boulder1.save("/Users/Marty/Desktop/boulder1.html")
+
 
 
 
