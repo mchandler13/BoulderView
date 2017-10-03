@@ -44,7 +44,7 @@ After each pull, new data would be added into the dataframe, with any repeats be
 I dropped all rows where coordinates were NaN, and then grouped the dataframe by coordinates, and found the count of each feature. Then I plotted the results over a map of Boulder, with the size of each marker indicating the number of tweets sent from each location. This created a new dataframe called df_coords, containing the counts of the Type column ("Photo or "Not Photo"). It was helpful for me to get a general idea of where people were sending Tweets. This is the dataframe on which I would base my model.
 
 
-<img alt="EDA_1" src="data/images/EDA_2.jpg" width='700' height = '450'>
+<img alt="EDA_1" src="data/images/BLDR_PINGS.png" width='700' height = '450'>
 
 <sub>Made with [Seaborn](https://seaborn.pydata.org/)</sub>
 
