@@ -91,7 +91,7 @@ if __name__ == '__main__':
     #     print("TT_Split #{}:".format(r))
     #     accuracies = []
     #     for i in ind:
-    #         tm = TextModel('../data/tweets.txt',i,r)
+    #         tm = TextModel('../data/tweets.txt',i)
     #         tm.predict(i)
     #         X_train, X_test, y_train, y_test, y_pred, truth, text, link, coords = tm.variables()
     #         accuracies.append(tm.acc())

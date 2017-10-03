@@ -85,6 +85,7 @@ body {
   left:2%;
   position:inherit;
   width:96%;
+  font-size: 18px;
 }
 
 
@@ -141,6 +142,8 @@ html {
     padding: 15px;
     position: relative;
     width: 20%;
+    font-size: 20px;
+    margin-bottom:10px;
 }
 
 .buttons:hover{
