@@ -46,7 +46,7 @@ I dropped all rows where coordinates were NaN, and then grouped the dataframe by
 
 <img alt="EDA_1" src="data/images/BLDR_PINGS.png" width='700' height = '450'>
 
-<sub>Made with [Seaborn](https://seaborn.pydata.org/)</sub>
+<sub>**Figure 2:** An early plot of downtown Boulder showing the locations of Tweets.</sub>
 
 Moving forward, I knew I'd be using interactive plots, so I looked into a few:
 * [Bokeh](https://bokeh.pydata.org/en/latest/) Useful for Visualization of large datasets
@@ -76,7 +76,7 @@ I split the data into a training set and a testing set. Using [tfidfVectorizer](
 ## Accuracy
 The average accuracy for my model was around .648, meaning roughly 65% of the time, my model would be able to accurately predict the location of a tweet based on its text. The low accuracy is largely due to the small size of my dataset. As time goes on, and I will be able to collect more Tweets, and the accuracy will increase. I also knew that limiting my score by only considering a prediction to be successful if the actual coordinates equaled the predicted coordinates. I investigated what happened when I defined a success by the actual coordinates being in the top N predictions, instead of just the top prediction:
 
-<img alt="accuracy_plot" src="data/images/avg_acc_plot.png" width='350' height = '230'>
+<img alt="accuracy_plot" src="data/images/avg_acc_plot.png" width='500' height = '380'>
 
 
 Points | Accuracy
@@ -95,7 +95,7 @@ I made the decision for my model to check the top 3 values and return those coor
 <sub> **Interpretation:** we can be 74.5% sure that the Tweet came from one of these three locations</sub>
 
 Intuitively, we know that increasing the number of points will increase the accuracy. So why not include 10 points? 30? 100? The answer comes down to practicality. Anyone using this app is trying to figure out the location of a particular Tweet. Yes, increasing the number of point will indeed increase our accuracy (confidence), but it results in larger number of possible points, which is the opposite of what we're trying to do here. It's important to have higher accuracy, but not if it's causing a loss in information. I decided on 3 points, which resulted in higher accuracy, but not at the users expense.
-
+- - - - 
 ## Using The Model
 Once the model was running and I was satisfied with the accuracy, I could pull a random Tweet (picture) and predict it's location based on the associated text.
 
