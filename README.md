@@ -35,7 +35,7 @@ After each pull, new data would be added into the dataframe, with any repeats be
 * **Created_At**: The date/time when the tweet was posted
 * **Coordinates**: the longitude/latitude coordinates of the tweet
 
-<img alt="AsDict" src="data/images/AsDict.jpg" width='500' height = '400'>
+<img alt="AsDict" src="data/images/AsDict2.png" width='500' height = '400'>
 
 <sub>**Figure 1:** A single Tweet in the form of a dictionary, which allows me to gather metadata with ease</sub>
 
