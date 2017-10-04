@@ -68,6 +68,7 @@ def future_Steps():
     d = [list(df_coords["Longitude"]),list(df_coords["Latitude"]),list(df_coords["Num_Hashtags"])]
     return render_template('future_steps.html',data = d)
 
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
     # the combination of host and port are where we look for it in our browser
