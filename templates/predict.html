@@ -81,9 +81,18 @@
   		id: 'mapbox.streets'
   	}).addTo(mymap);
   </script>
-  {% for i in data[1] %}
+
     <script>
-      var marker = L.circle([{{i[1]}},{{i[0]}}],{color:'#000000',radius:50}).addTo(mymap);
+    var c = 0;
+    {% for i in data[1] %}
+      var colors = ['#000000','#7777CC','#CC7733'];
+      var likelihood = ['Likeliest Point','Second-likeliest Point','Third-Likeliest Point']
+      var circle = L.circle([{{i[1]}},{{i[0]}}],{color:colors[c],radius:40}).addTo(mymap);
+      circle.bindPopup(likelihood[c]+"\n ("+{{i[1]|round(4)}}+","+{{i[0]|round(4)}}+")");
+      c+=1;
+
+
+    {% endfor %}
     </script>
-  {% endfor %}
+
 </html>
