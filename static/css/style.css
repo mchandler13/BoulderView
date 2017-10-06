@@ -33,6 +33,15 @@ nav > ul > li > a:hover{
   color: #000000;
 }
 
+.active {
+    background-color: #666666;
+    text-decoration: underline #ffffff;
+}
+
+.active:hover{
+  text-decoration-color: #000000;
+}
+
 /*****************************************/
 /*************** END NAV *****************/
 /*****************************************/
@@ -86,6 +95,10 @@ body {
   position:inherit;
   width:96%;
   font-size: 18px;
+}
+
+.mainDiv a{
+  color:#ffffff;
 }
 
 

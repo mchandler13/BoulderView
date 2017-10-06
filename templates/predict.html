@@ -21,8 +21,8 @@
     <nav id = "nav1">
       <ul class = "inline1">
         <li><a href="/">Home</a></li>
-        <li><a href="predict">Predict</a></li>
-        <li><a href="plots">Plots</a></li>
+        <li class = "active"><a href="predict">Predict</a></li>
+        <!-- <li><a href="plots">Plots</a></li>\ -->
         <li><a href="future_steps">Future Steps</a></li>
       </ul>
     </nav>
@@ -38,8 +38,12 @@
         <button onclick = "rel()" class = "buttons">Go Again</button>
       </div>
       <!-- <div id="locText">Text: </div> -->
-      <div id = "predCoord" class = "info">Predicted Coordinates: </div>
+
+
+      <!-- <div id = "predCoord" class = "info">Predicted Coordinates: </div>-->
       <div id = "actCoord" class = "info">Actual Coordinates: </div>
+
+
       <!-- <div id = "error" class = "info">Prediction: </div>
       <div id = "accuracy" class = "info">Accuracy: </div> -->
       <div id = "text" class = "info">Text: </div>
@@ -51,13 +55,13 @@
   <script>
     function getLoc(){
 
-      predCoord.innerHTML = "Predicted Coordinates: {% for i in data[1] %} <br>({{(i[0])|round(4)}}, {{(i[1])|round(4)}}) {% endfor %}";
-      actCoord.innerHTML = "Actual Coordinates:<br> {{data[2]}}";
+      // predCoord.innerHTML = "Predicted Coordinates: {% for i in data[1] %} <br>({{(i[0])|round(4)}}, {{(i[1])|round(4)}}) {% endfor %}";
+      // actCoord.innerHTML = "Actual Coordinates:<br> {{data[2]}}";
       theImg.innerHTML = '<img id = "displayImg" src = {{data[3]}}>';
       text.innerHTML = 'Text: {{data[4]}}>';
 
-      document.getElementById("predCoord").style.visibility = "visible";
-      document.getElementById("actCoord").style.visibility = "visible";
+      // document.getElementById("predCoord").style.visibility = "visible";
+      // document.getElementById("actCoord").style.visibility = "visible";
       document.getElementById("text").style.visibility = "visible";
       document.getElementById("theImg").style.visibility = "visible";
       document.getElementById("displayImg").style.visibility = "visible";
@@ -85,9 +89,9 @@
     <script>
     var c = 0;
     {% for i in data[1] %}
-      var colors = ['#000000','#7777CC','#CC7733'];
+      var colors = ['#000000','#222222','#444444'];
       var likelihood = ['Likeliest Point','Second-likeliest Point','Third-Likeliest Point']
-      var circle = L.circle([{{i[1]}},{{i[0]}}],{color:colors[c],radius:40}).addTo(mymap);
+      var circle = L.marker([{{i[1]}},{{i[0]}}],{color:colors[c],radius:80}).addTo(mymap);
       circle.bindPopup(likelihood[c]+"\n ("+{{i[1]|round(4)}}+","+{{i[0]|round(4)}}+")");
       c+=1;
 
