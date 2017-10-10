@@ -25,6 +25,7 @@ class TextModel(object):
     def _initialize(self,filename):
         df = pd.read_csv(filename)
         df = df.drop_duplicates('Text').reset_index()
+        df = df[~df["Text"].str.contains("sex|#Dating|#Sugardating")]
         df['Hashtags'] = df.Hashtags.apply(lambda x: x[1:-1].replace("'","").split(", "))
         df['Hashtags'] = df.Hashtags.apply(lambda x: [] if '#' not in x[0] else x)
         df['Coordinates'] = df[['Longitude', 'Latitude']].apply(lambda x: tuple(x), axis=1)
@@ -35,6 +36,7 @@ class TextModel(object):
 
         df_pics = df[df['Type']=='photo'].reset_index()
         df_pics = df_pics[["Text","Pic_Link","Coordinates"]]
+
         return df_coords,df_pics
 
     def get_X_y(self):

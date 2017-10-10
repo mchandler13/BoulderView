@@ -67,6 +67,7 @@ body {
   color:#ffffff;
   top:10%;
   padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .mainDiv > h1{
@@ -192,6 +193,7 @@ td, th {
   opacity: 1;
   height: 400px;
   visibility: hidden;
+  max-width:100%;
 }
 
 #theImg{
